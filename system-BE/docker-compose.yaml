@@ -1,0 +1,19 @@
+version: "3.1"
+services:
+  parser-enter:
+    image: sasabonta/parser-enter
+    # 5000-5010
+    ports:
+      - "5000:3000"
+
+  parser-darwin:
+    image: sasabonta/parser-darwin
+    # 5000-5010
+    ports:
+      - "5001:3000"
+
+  parser-shopit:
+    image: sasabonta/parser-shopit
+    # 5000-5010
+    ports:
+      - "5002:3000"

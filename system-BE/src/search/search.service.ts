@@ -4,17 +4,19 @@ import providers from '../constants/providers';
 
 @Injectable()
 export class SearchService {
-  async searchItemsEverywhere(search) {
+  async searchItemsEverywhere(search, page = 1) {
     let result = [];
     for (const provider of providers) {
-      let providerData = (
-        await axios.get(`${provider.url}search?search=${search}`)
-      ).data;
-      providerData = providerData.map((e) => ({
-        ...e,
-        provider: provider.name,
-      }));
-      result = result.concat(providerData);
+      if (+page === 1 || (page > 1 && provider.paginated)) {
+        let providerData = (
+          await axios.get(`${provider.url}search?search=${search}&page=${page}`)
+        ).data;
+        providerData = providerData.map((e) => ({
+          ...e,
+          provider: provider.name,
+        }));
+        result = result.concat(providerData);
+      }
     }
     return result;
   }

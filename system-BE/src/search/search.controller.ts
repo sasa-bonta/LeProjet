@@ -6,7 +6,7 @@ export class SearchController {
   constructor(readonly searchService: SearchService) {}
 
   @Get()
-  searchItems(@Query('search') search) {
-    return this.searchService.searchItemsEverywhere(search);
+  searchItems(@Query('search') search, @Query('page') page) {
+    return this.searchService.searchItemsEverywhere(search, page);
   }
 }

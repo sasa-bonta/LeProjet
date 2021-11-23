@@ -26,8 +26,12 @@
 
 ```bash
 docker-compose up -d
+```
+
+```bash
 npm run start:dev
 ```
+
 - **Search product on all parsers:**
 http://localhost:5000/search?search=iphone
 

@@ -17,45 +17,13 @@
 
       <v-spacer></v-spacer>
 
-      <v-responsive max-width="260">
-        <v-text-field
-          dense
-          flat
-          hide-details
-          rounded
-          solo-inverted
-        ></v-text-field>
-      </v-responsive>
+      <Search
+        @submitInput="search"
+      />
 
       <v-spacer></v-spacer>
 
-      <v-menu offset-y :close-on-content-click="false">
-        <template v-slot:activator="{ on, attrs }">
-          <v-icon
-            v-bind="attrs"
-            v-on="on"
-            class="crossRotate"
-          >settings
-          </v-icon>
-        </template>
-        <v-list>
-          <v-list-item
-            v-for="(item, index) in items"
-            :key="index"
-          >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-switch
-              :input-value="isDarkModeEnabled"
-              inset
-              :label="`Dark mode : ${isDarkModeEnabled.toString()}`"
-              @change="changeDarkMode"
-            ></v-switch>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+      <Settings />
 
     </v-container>
   </v-app-bar>
@@ -63,9 +31,12 @@
 
 <script>
 import {mapGetters} from "vuex";
+import Settings from "./Settings";
+import Search from "./Search";
 
 export default {
   name: "Navbar",
+  components: {Search, Settings},
   data: () => ({
     links: [
       {
@@ -89,12 +60,6 @@ export default {
         name: 'contacts'
       },
     ],
-    items: [
-      {title: 'Click Me 1'},
-      {title: 'Click Me 2'},
-      {title: 'Click Me 3'},
-      {title: 'Click Me 4'},
-    ],
   }),
   computed: {
     ...mapGetters({
@@ -104,32 +69,21 @@ export default {
       return this.isDarkModeEnabled ? "" : "white"
     },
   },
-  watch: {
-    isDarkModeEnabled: {
-      handler() {
-        this.$vuetify.theme.dark = this.isDarkModeEnabled
-      },
-      immediate: true,
-    },
-  },
   methods: {
-    changeDarkMode() {
-      this.$store.commit('settings/setDarkModeEnabled', !this.isDarkModeEnabled)
+    search(value) {
+      if (value !== this.$route.query.search) {
+        this.$router.push({
+          name: 'products',
+          query: {
+            search: value
+          }
+        })
+      }
     },
   },
 }
 </script>
 
 <style scoped>
-.crossRotate:focus {
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 
-.crossRotate:active {
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 </style>

@@ -1,0 +1,1 @@
+export const ERROR_AXIOS_FETCH = 'ERROR_AXIOS_FETCH'

@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <Navbar/>
 
-    <v-main class="grey lighten-3">
+    <v-main :class="vMainClass"> <!--change class if dark mode-->
       <v-container>
         <v-row>
           <v-col cols="2">
@@ -22,10 +22,19 @@
 import Navbar from "./Navbar";
 import Categories from "./Categories";
 import MainView from "./MainView";
+import {mapGetters} from "vuex";
 
 export default {
   name: "Dashboard",
-  components: {MainView, Categories, Navbar}
+  components: {MainView, Categories, Navbar},
+  computed: {
+    ...mapGetters({
+      isDarkModeEnabled: 'settings/getDarkModeEnabled'
+    }),
+    vMainClass() {
+      return this.isDarkModeEnabled ? "grey darken-3" : "grey lighten-3"
+    },
+  },
 }
 </script>
 

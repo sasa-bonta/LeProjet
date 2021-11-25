@@ -1,5 +1,8 @@
 <template>
-  <v-sheet rounded="lg">
+  <v-sheet
+    rounded="lg"
+    :class="vSheetClass"
+  >
     <v-list color="transparent">
       <v-list-item
         v-for="n in 5"
@@ -30,8 +33,18 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
-  name: "Categories"
+  name: "Categories",
+  computed: {
+    ...mapGetters({
+      isDarkModeEnabled: 'settings/getDarkModeEnabled'
+    }),
+    vSheetClass() {
+      return this.isDarkModeEnabled ? "grey darken-2" : ""
+    },
+  },
 }
 </script>
 

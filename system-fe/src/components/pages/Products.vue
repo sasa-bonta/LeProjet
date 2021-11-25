@@ -13,9 +13,6 @@ export default {
       type: String,
     }
   },
-  data: () => ({
-    products: '',
-  }),
   // computed: {
   //   ...mapGetters({
   //     getIsLoading: 'products/getIsLoading',

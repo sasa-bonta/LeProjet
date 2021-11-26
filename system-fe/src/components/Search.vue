@@ -18,6 +18,23 @@ export default {
   data: () => ({
     value: '',
   }),
+  computed: {
+    path: function () {
+      return this.$route.name
+    },
+    isProductsPage: function () {
+      return this.path === 'products'
+    },
+  },
+  watch: {
+    path: {
+      handler() {
+        if (!this.isProductsPage) {
+          this.value = ''
+        }
+      },
+    },
+  },
 }
 </script>
 

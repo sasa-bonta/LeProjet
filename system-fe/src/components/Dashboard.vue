@@ -2,14 +2,14 @@
   <v-app id="inspire">
     <Navbar/>
 
-    <v-main :class="vMainClass"> <!--change class if dark mode-->
-      <v-container>
+    <v-main :class="vMainClass">
+      <v-container fluid>
         <v-row>
           <v-col cols="2">
-            <Categories/>
+            <SideMenu />
           </v-col>
 
-          <v-col>
+          <v-col cols="10">
             <MainView/>
           </v-col>
         </v-row>
@@ -20,13 +20,13 @@
 
 <script>
 import Navbar from "./Navbar";
-import Categories from "./Categories";
 import MainView from "./MainView";
 import {mapGetters} from "vuex";
+import SideMenu from "./SideMenu";
 
 export default {
   name: "Dashboard",
-  components: {MainView, Categories, Navbar},
+  components: {SideMenu, MainView, Navbar},
   computed: {
     ...mapGetters({
       isDarkModeEnabled: 'settings/getDarkModeEnabled'

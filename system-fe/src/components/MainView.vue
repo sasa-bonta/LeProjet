@@ -2,7 +2,7 @@
   <v-sheet
     min-height="70vh"
     rounded="lg"
-    :class="vSheetClass"
+    :class="$vuetify.theme.dark ? 'grey darken-2' : ''"
   >
     <RouterView/>
     <ErrorSnackbar />
@@ -20,9 +20,6 @@ export default {
     ...mapGetters({
       isDarkModeEnabled: 'settings/getDarkModeEnabled'
     }),
-    vSheetClass() {
-      return this.isDarkModeEnabled ? "grey darken-2" : ""
-    },
   },
 }
 </script>

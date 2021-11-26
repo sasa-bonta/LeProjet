@@ -1,7 +1,7 @@
 <template>
   <v-sheet
     rounded="lg"
-    :class="vSheetClass"
+    :class="$vuetify.theme.dark ? 'grey darken-2' : ''"
   >
     <FilterMenu
       v-if="isProductsPage"/>
@@ -23,9 +23,6 @@ export default {
     ...mapGetters({
       isDarkModeEnabled: 'settings/getDarkModeEnabled'
     }),
-    vSheetClass() {
-      return this.isDarkModeEnabled ? "grey darken-2" : ""
-    },
     isProductsPage: function () {
       return this.$route.name === 'products'
     },

@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     app
-    :color="navbarColor"
+    :color="$vuetify.theme.dark ? '' : 'white'"
     flat
   >
     <v-container class="py-0 fill-height">
@@ -65,9 +65,6 @@ export default {
     ...mapGetters({
       isDarkModeEnabled: 'settings/getDarkModeEnabled'
     }),
-    navbarColor() {
-      return this.isDarkModeEnabled ? "" : "white"
-    },
   },
   methods: {
     search(value) {

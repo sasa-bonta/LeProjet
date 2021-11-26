@@ -1,8 +1,10 @@
 <template>
-  <pre>{{ $store.getters['products/getList'] }}</pre>
+  <pre>{{ getList }}</pre>
 </template>
 
 <script>
+
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "Products",
@@ -13,32 +15,34 @@ export default {
       type: String,
     }
   },
-  // computed: {
-  //   ...mapGetters({
-  //     getIsLoading: 'products/getIsLoading',
-  //     getList: 'products/getList',
-  //   }),
-  // },
+  computed: {
+    ...mapGetters({
+      getIsLoading: 'products/getIsLoading',
+      getList: 'products/getList',
+    }),
+    search: function () {
+      return this.$route.query.search
+    },
+    page: function () {
+      return this.$route.query.page
+    }
+  },
   watch: {
     $route() {
-      console.log("test loading")
-      // this.loadProducts({search: 'apple'})
-      this.$store.dispatch('products/loadProducts', {search: this.$route.query.search})/*.catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e))*/
-      // console.log(this.$store.getters['products/getList'])
+      this.loadProducts({search: this.search, page: this.page})
     },
     link: {
       handler() {
-        console.log("loading now")
-        // this.loadProducts({search: 'samsung'})
-        this.$store.dispatch('products/loadProducts', {search: this.$route.query.search})/*.catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e))*/
-        // console.log(this.$store.getters['products/getList'])
+        this.loadProducts({search: this.search, page: this.page})
       },
       immediate: true,
     },
   },
-  // ...mapActions({
-  //   loadProducts: 'products/loadProducts',
-  // }),
+  methods: {
+    ...mapActions({
+      loadProducts: 'products/loadProducts',
+    }),
+  },
 }
 </script>
 

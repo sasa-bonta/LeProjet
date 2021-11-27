@@ -109,9 +109,9 @@ export default {
       {ord: 'Des', icon: 'south'},
     ],
     orderIndex: 0,
-    min: -50,
-    max: 90,
-    range: [-20, 70],
+    min: 0,
+    max: 100,
+    range: [],
     currencies: [
       {name: 'mdl', sign: 'L', active: true},
       {name: 'euro', sign: '€', active: false},
@@ -123,18 +123,33 @@ export default {
     ...mapGetters({
       getIsShopsLoading: 'shops/getIsLoading',
       getShops: 'shops/getShopsList',
+      getProducts: 'products/getList',
     }),
+    getMin: function () {
+      return Math.min(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+    },
+    getMax: function () {
+      return Math.max(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+    },
   },
   created() {
     this.chosenCurrency = this.currencies[0]
     this.filterCriteria = this.filterCriteriaItems[0]
     this.loadShops()
   },
+  beforeMount() {
+    this.range = [this.min, this.max]
+  },
+  watch: {
+    // range: function () {
+    //   console.log("hui")
+    // },
+  },
   methods: {
     changeOrder() {
       this.orderIndex = this.orderIndex ? 0 : 1
-      console.log(this.shops)
-      console.log(this.shopsActive)
+      console.log(this.getMin)
+      console.log(this.getMax)
     },
     changeCurrency(currency) {
       this.currencies[this.currencies.indexOf(this.chosenCurrency)].active = false

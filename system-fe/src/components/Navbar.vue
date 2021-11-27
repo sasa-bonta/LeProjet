@@ -44,6 +44,10 @@ export default {
         name: 'home'
       },
       {
+        title: 'Products',
+        name: 'products'
+      },
+      {
         title: 'Favorites',
         name: 'favorites'
       },

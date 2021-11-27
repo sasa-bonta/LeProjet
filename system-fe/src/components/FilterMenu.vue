@@ -25,6 +25,7 @@
       </v-btn>
     </div>
 
+    <!-- Filter shops -->
     <v-select
       v-model="getShops"
       :items="getShops"
@@ -32,6 +33,7 @@
       label="Shops"
       multiple
       outlined
+      class="mx-3"
     ></v-select>
 
     <!-- Price range slider -->
@@ -40,6 +42,29 @@
       color="transparent"
     >
       <v-subheader>Min and max range slider</v-subheader>
+
+      <v-row class="d-flex justify-lg-space-between">
+        <v-text-field
+          :value="range[0]"
+          class="mt-0 pt-0 shrink ml-6"
+          hide-details
+          single-line
+          type="number"
+          style="width: 60px"
+          @change="$set(range, 0, $event)"
+        ></v-text-field>
+
+        <v-text-field
+          :value="range[1]"
+          class="mt-0 pt-0 shrink mr-6"
+          hide-details
+          single-line
+          type="number"
+          style="width: 60px"
+          @change="$set(range, 1, $event)"
+        ></v-text-field>
+      </v-row>
+
       <v-card-text>
         <v-row>
           <v-col class="px-4">
@@ -50,28 +75,6 @@
               hide-details
               class="align-center"
             >
-              <template v-slot:prepend>
-                <v-text-field
-                  :value="range[0]"
-                  class="mt-0 pt-0"
-                  hide-details
-                  single-line
-                  type="number"
-                  style="width: 60px"
-                  @change="$set(range, 0, $event)"
-                ></v-text-field>
-              </template>
-              <template v-slot:append>
-                <v-text-field
-                  :value="range[1]"
-                  class="mt-0 pt-0"
-                  hide-details
-                  single-line
-                  type="number"
-                  style="width: 60px"
-                  @change="$set(range, 1, $event)"
-                ></v-text-field>
-              </template>
             </v-range-slider>
           </v-col>
         </v-row>
@@ -126,10 +129,12 @@ export default {
       getProducts: 'products/getList',
     }),
     getMin: function () {
-      return Math.min(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+      const min = Math.min(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+      return Number.isFinite(min) ? min : 0
     },
     getMax: function () {
-      return Math.max(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+      const max = Math.max(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+      return Number.isFinite(max) ? max : 0
     },
   },
   created() {
@@ -141,15 +146,15 @@ export default {
     this.range = [this.min, this.max]
   },
   watch: {
-    // range: function () {
-    //   console.log("hui")
-    // },
+    getProducts: function () {
+      this.min = this.getMin
+      this.max = this.getMax
+      this.range = [this.min, this.max]
+    },
   },
   methods: {
     changeOrder() {
       this.orderIndex = this.orderIndex ? 0 : 1
-      console.log(this.getMin)
-      console.log(this.getMax)
     },
     changeCurrency(currency) {
       this.currencies[this.currencies.indexOf(this.chosenCurrency)].active = false

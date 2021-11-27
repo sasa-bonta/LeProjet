@@ -25,6 +25,15 @@
       </v-btn>
     </div>
 
+    <v-select
+      v-model="getShops"
+      :items="getShops"
+      chips
+      label="Shops"
+      multiple
+      outlined
+    ></v-select>
+
     <!-- Price range slider -->
     <v-card
       flat
@@ -88,11 +97,13 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: "FilterMenu",
   data: () => ({
-    filterCriteriaItems: ['Price', 'Shop', 'Alphabetic'],
-    filterCriteria: null,
+    filterCriteriaItems: ['Price', 'Name'],
+    filterCriteria: '',
     order: [
       {ord: 'Asc', icon: 'north'},
       {ord: 'Des', icon: 'south'},
@@ -106,21 +117,33 @@ export default {
       {name: 'euro', sign: '€', active: false},
       {name: 'dollar', sign: '$', active: false},
     ],
-    chosenCurrency: null,
+    chosenCurrency: {},
   }),
+  computed: {
+    ...mapGetters({
+      getIsShopsLoading: 'shops/getIsLoading',
+      getShops: 'shops/getShopsList',
+    }),
+  },
   created() {
     this.chosenCurrency = this.currencies[0]
     this.filterCriteria = this.filterCriteriaItems[0]
+    this.loadShops()
   },
   methods: {
     changeOrder() {
       this.orderIndex = this.orderIndex ? 0 : 1
+      console.log(this.shops)
+      console.log(this.shopsActive)
     },
     changeCurrency(currency) {
       this.currencies[this.currencies.indexOf(this.chosenCurrency)].active = false
       this.currencies[this.currencies.indexOf(currency)].active = true
       this.chosenCurrency = currency
     },
+    ...mapActions({
+      loadShops: 'shops/loadShopsList',
+    }),
   },
 }
 </script>

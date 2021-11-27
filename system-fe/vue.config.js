@@ -9,6 +9,14 @@ module.exports = {
         ws: true,
         changeOrigin: true,
       },
+      '^/api/shops': {
+        target: 'http://localhost:3000/shops',
+        pathRewrite: {
+          '^/api/shops': '',
+        },
+        ws: true,
+        changeOrigin: true,
+      },
     },
   },
   transpileDependencies: [

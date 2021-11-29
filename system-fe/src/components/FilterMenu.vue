@@ -70,8 +70,8 @@
           <v-col class="px-4">
             <v-range-slider
               v-model="filterCriteria.range"
-              :max="filterCriteria.maxPrice"
-              :min="filterCriteria.minPrice"
+              :max="filterCriteria.max"
+              :min="filterCriteria.min"
               hide-details
               class="align-center"
             >
@@ -168,9 +168,9 @@ export default {
   },
   watch: {
     getProducts: function () {
-      this.filterCriteria.minPrice = this.getMin
-      this.filterCriteria.maxPrice = this.getMax
-      this.filterCriteria.range = [this.filterCriteria.minPrice, this.filterCriteria.maxPrice]
+      this.filterCriteria.min = this.getMin
+      this.filterCriteria.max = this.getMax
+      this.filterCriteria.range = [this.filterCriteria.min, this.filterCriteria.max]
     },
     getShops() {
       this.filterCriteria.shops = this.getShops
@@ -184,7 +184,7 @@ export default {
     filterCriteria: {
       handler() {
         // console.log(this.filterCriteria.min + " " + this.filterCriteria.max)
-        // console.log(this.filterCriteria.minPrice + " " + this.filterCriteria.maxPrice)
+        console.log(this.filterCriteria.range)
         // console.log(this.filterCriteria.range[0] + " " + this.filterCriteria.range[1])
         // console.log(this.filterCriteria.shops)
       },

@@ -45,23 +45,23 @@
 
       <v-row class="d-flex justify-lg-space-between">
         <v-text-field
-          :value="range[0]"
+          :value="filterCriteria.range[0]"
           class="mt-0 pt-0 shrink ml-6"
           hide-details
           single-line
           type="number"
           style="width: 60px"
-          @change="$set(range, 0, $event)"
+          @change="$set(filterCriteria.range, 0, $event)"
         ></v-text-field>
 
         <v-text-field
-          :value="range[1]"
+          :value="filterCriteria.range[1]"
           class="mt-0 pt-0 shrink mr-6"
           hide-details
           single-line
           type="number"
           style="width: 60px"
-          @change="$set(range, 1, $event)"
+          @change="$set(filterCriteria.range, 1, $event)"
         ></v-text-field>
       </v-row>
 
@@ -69,9 +69,9 @@
         <v-row>
           <v-col class="px-4">
             <v-range-slider
-              v-model="range"
-              :max="max"
-              :min="min"
+              v-model="filterCriteria.range"
+              :max="filterCriteria.maxPrice"
+              :min="filterCriteria.minPrice"
               hide-details
               class="align-center"
             >
@@ -104,25 +104,21 @@ import {mapActions, mapGetters} from "vuex";
 
 const ASC = 0;
 const DESC = 1;
+
 export default {
   name: "FilterMenu",
   data: () => ({
-    // sort by name
     sortByItems: ['Price', 'Name'],
-    // sortBy: '',
-    // sort order asc/desc
     order: [
       {ord: 'Asc', icon: 'north'},
       {ord: 'Des', icon: 'south'},
     ],
-    orderIndex: 0,
     // selected shops
     shopsSelected: [],
     // price range
-    min: 0,
-    max: 100,
-    range: [],
-
+    // min: 0,
+    // max: 100,
+    // range: [],
     currencies: [
       {name: 'mdl', sign: 'L', active: true},
       {name: 'euro', sign: '€', active: false},
@@ -133,6 +129,24 @@ export default {
       name: '',
       order: ASC,
     },
+    filterCriteria: {
+      min: 0,
+      max: 100,
+      shops: [],
+      range: [],
+      get minPrice() {
+        return this.range[0]
+      },
+      get maxPrice() {
+        return this.range[1]
+      },
+      set minPrice(min) {
+        this.range[0] = min
+      },
+      set maxPrice(max) {
+        this.range[1] = max
+      },
+    },
   }),
   computed: {
     ...mapGetters({
@@ -141,11 +155,11 @@ export default {
       getProducts: 'products/getList',
     }),
     getMin: function () {
-      const min = Math.min(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+      const min = Math.min(...this.getProducts.map(item => item.price.replace(/\s/g, '')))
       return Number.isFinite(min) ? min : 0
     },
     getMax: function () {
-      const max = Math.max(...this.getProducts.map(item => item.price.replace(/\s/g,'')))
+      const max = Math.max(...this.getProducts.map(item => item.price.replace(/\s/g, '')))
       return Number.isFinite(max) ? max : 0
     },
   },
@@ -155,30 +169,35 @@ export default {
     this.loadShops()
   },
   beforeMount() {
-    this.range = [this.min, this.max]
+    this.filterCriteria.range = [this.filterCriteria.min, this.filterCriteria.max]
   },
   watch: {
     getProducts: function () {
-      this.min = this.getMin
-      this.max = this.getMax
-      this.range = [this.min, this.max]
+      this.filterCriteria.minPrice = this.getMin
+      this.filterCriteria.maxPrice = this.getMax
+      this.filterCriteria.range = [this.filterCriteria.minPrice, this.filterCriteria.maxPrice]
     },
     getShops() {
       this.shopsSelected = this.getShops
     },
-    shopsSelected() {
-      // console.log(this.shopsSelected)
-    },
     sortCriteria: {
       handler() {
-        console.log(this.sortCriteria)
+        // console.log(this.sortCriteria.name + " " + this.sortCriteria.order)
+      },
+      deep: true,
+    },
+    filterCriteria: {
+      handler() {
+        console.log(this.filterCriteria.min + " " + this.filterCriteria.max)
+        console.log(this.filterCriteria.minPrice + " " + this.filterCriteria.maxPrice)
+        console.log(this.filterCriteria.range[0] + " " + this.filterCriteria.range[1])
       },
       deep: true,
     },
   },
   methods: {
     changeOrder() {
-      this.sortCriteria.order = this.orderIndex ? ASC : DESC
+      this.sortCriteria.order = this.sortCriteria.order ? ASC : DESC
     },
     changeCurrency(currency) {
       this.currencies[this.currencies.indexOf(this.chosenCurrency)].active = false

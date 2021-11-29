@@ -27,7 +27,7 @@
 
     <!-- Filter shops -->
     <v-select
-      v-model="shopsSelected"
+      v-model="filterCriteria.shops"
       :items="getShops"
       chips
       label="Shops"
@@ -87,10 +87,10 @@
       :class="$vuetify.theme.dark ? 'grey darken-2' : ''"
     >
       <v-btn
-        v-for="currency in currencies"
+        v-for="currency in currenciesList"
         :key="currency.name"
         class="pa-2 mb-6"
-        :disabled="currency === chosenCurrency"
+        :disabled="currency === currency"
         @click="changeCurrency(currency)"
       >
         <h3>{{ currency.sign }}</h3>
@@ -113,21 +113,16 @@ export default {
       {ord: 'Asc', icon: 'north'},
       {ord: 'Des', icon: 'south'},
     ],
-    // selected shops
-    shopsSelected: [],
-    // price range
-    // min: 0,
-    // max: 100,
-    // range: [],
-    currencies: [
+    currenciesList: [
       {name: 'mdl', sign: 'L', active: true},
       {name: 'euro', sign: '€', active: false},
       {name: 'dollar', sign: '$', active: false},
     ],
-    chosenCurrency: {},
+    currency: {},
     sortCriteria: {
       name: '',
       order: ASC,
+      shops: [],
     },
     filterCriteria: {
       min: 0,
@@ -164,7 +159,7 @@ export default {
     },
   },
   created() {
-    this.chosenCurrency = this.currencies[0]
+    this.currency = this.currenciesList[0]
     this.sortCriteria.name = this.sortByItems[0]
     this.loadShops()
   },
@@ -178,7 +173,7 @@ export default {
       this.filterCriteria.range = [this.filterCriteria.minPrice, this.filterCriteria.maxPrice]
     },
     getShops() {
-      this.shopsSelected = this.getShops
+      this.filterCriteria.shops = this.getShops
     },
     sortCriteria: {
       handler() {
@@ -188,9 +183,10 @@ export default {
     },
     filterCriteria: {
       handler() {
-        console.log(this.filterCriteria.min + " " + this.filterCriteria.max)
-        console.log(this.filterCriteria.minPrice + " " + this.filterCriteria.maxPrice)
-        console.log(this.filterCriteria.range[0] + " " + this.filterCriteria.range[1])
+        // console.log(this.filterCriteria.min + " " + this.filterCriteria.max)
+        // console.log(this.filterCriteria.minPrice + " " + this.filterCriteria.maxPrice)
+        // console.log(this.filterCriteria.range[0] + " " + this.filterCriteria.range[1])
+        // console.log(this.filterCriteria.shops)
       },
       deep: true,
     },
@@ -200,9 +196,9 @@ export default {
       this.sortCriteria.order = this.sortCriteria.order ? ASC : DESC
     },
     changeCurrency(currency) {
-      this.currencies[this.currencies.indexOf(this.chosenCurrency)].active = false
-      this.currencies[this.currencies.indexOf(currency)].active = true
-      this.chosenCurrency = currency
+      this.currenciesList[this.currenciesList.indexOf(this.currency)].active = false
+      this.currenciesList[this.currenciesList.indexOf(currency)].active = true
+      this.currency = currency
     },
     ...mapActions({
       loadShops: 'shops/loadShopsList',

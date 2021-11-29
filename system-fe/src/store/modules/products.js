@@ -23,7 +23,13 @@ export default {
     },
     mutations: {
         mutateList(state, payload) {
-            state.list = payload
+            state.list = payload.map(item => ({
+                name: item.name,
+                image: item.image,
+                url: item.url,
+                provider: item.provider,
+                price: item.price.replace(/\s/g, '')
+            }))
         },
         mutateAppendList(state, payload) {
             state.list = state.list.concat(payload)

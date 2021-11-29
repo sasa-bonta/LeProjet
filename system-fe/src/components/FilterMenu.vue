@@ -151,11 +151,11 @@ export default {
       getProducts: 'products/getList',
     }),
     getMin: function () {
-      const min = Math.min(...this.getProducts.map(item => item.price.replace(/\s/g, '')))
+      const min = Math.min(...this.getProducts.map(item => item.price))
       return Number.isFinite(min) ? min : 0
     },
     getMax: function () {
-      const max = Math.max(...this.getProducts.map(item => item.price.replace(/\s/g, '')))
+      const max = Math.max(...this.getProducts.map(item => item.price))
       return Number.isFinite(max) ? max : 0
     },
   },
@@ -172,6 +172,7 @@ export default {
       this.filterCriteria.minLimit = this.getMin
       this.filterCriteria.maxLimit = this.getMax
       this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
+      this.filterProducts(this.filterCriteria)
     },
     getShops() {
       this.filterCriteria.shops = this.getShops
@@ -184,10 +185,6 @@ export default {
     },
     filterCriteria: {
       handler() {
-        // console.log(this.filterCriteria.minPrice + " " + this.filterCriteria.maxPrice)
-        // console.log(this.filterCriteria.range)
-        // console.log(this.filterCriteria.shops)
-        // this.filterProducts(this.filterCriteria)
         this.filterProducts(this.filterCriteria)
       },
       deep: true,
@@ -203,7 +200,7 @@ export default {
       this.currency = currency
     },
     filterProducts({minPrice, maxPrice, shops}) {
-      this.filteredProductsList = this.getProducts.filter(item => shops.includes(item.provider) && item.price > minPrice && item.price < maxPrice)
+      this.filteredProductsList = this.getProducts.filter(item => shops.includes(item.provider) && (item.price >= minPrice) && (item.price <= maxPrice))
       console.log(this.filteredProductsList)
     },
     ...mapActions({

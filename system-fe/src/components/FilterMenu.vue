@@ -70,8 +70,8 @@
           <v-col class="px-4">
             <v-range-slider
               v-model="filterCriteria.range"
-              :max="filterCriteria.max"
-              :min="filterCriteria.min"
+              :max="filterCriteria.maxLimit"
+              :min="filterCriteria.minLimit"
               hide-details
               class="align-center"
             >
@@ -125,8 +125,8 @@ export default {
       shops: [],
     },
     filterCriteria: {
-      min: 0,
-      max: 100,
+      minLimit: 0,
+      maxLimit: 100,
       shops: [],
       range: [],
       get minPrice() {
@@ -164,13 +164,13 @@ export default {
     this.loadShops()
   },
   beforeMount() {
-    this.filterCriteria.range = [this.filterCriteria.min, this.filterCriteria.max]
+    this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
   },
   watch: {
     getProducts: function () {
-      this.filterCriteria.min = this.getMin
-      this.filterCriteria.max = this.getMax
-      this.filterCriteria.range = [this.filterCriteria.min, this.filterCriteria.max]
+      this.filterCriteria.minLimit = this.getMin
+      this.filterCriteria.maxLimit = this.getMax
+      this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
     },
     getShops() {
       this.filterCriteria.shops = this.getShops
@@ -183,9 +183,8 @@ export default {
     },
     filterCriteria: {
       handler() {
-        // console.log(this.filterCriteria.min + " " + this.filterCriteria.max)
-        console.log(this.filterCriteria.range)
-        // console.log(this.filterCriteria.range[0] + " " + this.filterCriteria.range[1])
+        // console.log(this.filterCriteria.minPrice + " " + this.filterCriteria.maxPrice)
+        // console.log(this.filterCriteria.range)
         // console.log(this.filterCriteria.shops)
       },
       deep: true,

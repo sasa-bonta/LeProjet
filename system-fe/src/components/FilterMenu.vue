@@ -206,7 +206,6 @@ export default {
     filterProducts({minPrice, maxPrice, shops}) {
       console.log(shops)
       this.filteredProductsList = this.getProducts.filter(item => shops.includes(item.provider) && (item.price >= minPrice) && (item.price <= maxPrice))
-      console.log(this.filteredProductsList)
     },
     ...mapActions({
       loadShops: 'shops/loadShopsList',

@@ -124,6 +124,7 @@ export default {
       order: ASC,
       shops: [],
     },
+    filteredProductsList: [],
     filterCriteria: {
       minLimit: 0,
       maxLimit: 100,
@@ -186,6 +187,8 @@ export default {
         // console.log(this.filterCriteria.minPrice + " " + this.filterCriteria.maxPrice)
         // console.log(this.filterCriteria.range)
         // console.log(this.filterCriteria.shops)
+        // this.filterProducts(this.filterCriteria)
+        this.filterProducts(this.filterCriteria)
       },
       deep: true,
     },
@@ -198,6 +201,10 @@ export default {
       this.currenciesList[this.currenciesList.indexOf(this.currency)].active = false
       this.currenciesList[this.currenciesList.indexOf(currency)].active = true
       this.currency = currency
+    },
+    filterProducts({minPrice, maxPrice, shops}) {
+      this.filteredProductsList = this.getProducts.filter(item => shops.includes(item.provider) && item.price > minPrice && item.price < maxPrice)
+      console.log(this.filteredProductsList)
     },
     ...mapActions({
       loadShops: 'shops/loadShopsList',

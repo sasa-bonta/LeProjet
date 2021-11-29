@@ -27,7 +27,7 @@
 
     <!-- Filter shops -->
     <v-select
-      v-model="getShops"
+      v-model="shopsSelected"
       :items="getShops"
       chips
       label="Shops"
@@ -107,25 +107,28 @@ const DESC = 1;
 export default {
   name: "FilterMenu",
   data: () => ({
+    // sort by name
     sortByItems: ['Price', 'Name'],
     // sortBy: '',
+    // sort order asc/desc
     order: [
       {ord: 'Asc', icon: 'north'},
       {ord: 'Des', icon: 'south'},
     ],
-    // orderIndex: 0,
+    orderIndex: 0,
+    // selected shops
+    shopsSelected: [],
+    // price range
     min: 0,
     max: 100,
     range: [],
+
     currencies: [
       {name: 'mdl', sign: 'L', active: true},
       {name: 'euro', sign: '€', active: false},
       {name: 'dollar', sign: '$', active: false},
     ],
     chosenCurrency: {},
-    filterCriteria: {
-
-    },
     sortCriteria: {
       name: '',
       order: ASC,
@@ -160,10 +163,22 @@ export default {
       this.max = this.getMax
       this.range = [this.min, this.max]
     },
+    getShops() {
+      this.shopsSelected = this.getShops
+    },
+    shopsSelected() {
+      // console.log(this.shopsSelected)
+    },
+    sortCriteria: {
+      handler() {
+        console.log(this.sortCriteria)
+      },
+      deep: true,
+    },
   },
   methods: {
     changeOrder() {
-      this.orderIndex = this.orderIndex ? ASC : DESC
+      this.sortCriteria.order = this.orderIndex ? ASC : DESC
     },
     changeCurrency(currency) {
       this.currencies[this.currencies.indexOf(this.chosenCurrency)].active = false

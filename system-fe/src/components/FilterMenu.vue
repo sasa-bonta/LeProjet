@@ -90,7 +90,7 @@
         v-for="currency in currenciesList"
         :key="currency.name"
         class="pa-2 mb-6"
-        :disabled="currency === currency"
+        :disabled="currency.active"
         @click="changeCurrency(currency)"
       >
         <h3>{{ currency.sign }}</h3>

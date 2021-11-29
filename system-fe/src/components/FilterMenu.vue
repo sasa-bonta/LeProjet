@@ -5,8 +5,8 @@
       class="d-flex justify-space-around"
     >
       <v-select
-        :items="filterCriteriaItems"
-        v-model="filterCriteria"
+        :items="sortByItems"
+        v-model="sortCriteria.name"
         label="Solo field"
         class="mt-6 ml-3"
         dense
@@ -19,8 +19,8 @@
         elevation="2"
         @click="changeOrder"
       >
-        {{ order[orderIndex].ord }}
-        <v-icon small> {{ order[orderIndex].icon }}</v-icon>
+        {{ order[sortCriteria.order].ord }}
+        <v-icon small> {{ order[sortCriteria.order].icon }}</v-icon>
 
       </v-btn>
     </div>
@@ -102,16 +102,18 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 
+const ASC = 0;
+const DESC = 1;
 export default {
   name: "FilterMenu",
   data: () => ({
-    filterCriteriaItems: ['Price', 'Name'],
-    filterCriteria: '',
+    sortByItems: ['Price', 'Name'],
+    // sortBy: '',
     order: [
       {ord: 'Asc', icon: 'north'},
       {ord: 'Des', icon: 'south'},
     ],
-    orderIndex: 0,
+    // orderIndex: 0,
     min: 0,
     max: 100,
     range: [],
@@ -121,6 +123,13 @@ export default {
       {name: 'dollar', sign: '$', active: false},
     ],
     chosenCurrency: {},
+    filterCriteria: {
+
+    },
+    sortCriteria: {
+      name: '',
+      order: ASC,
+    },
   }),
   computed: {
     ...mapGetters({
@@ -139,7 +148,7 @@ export default {
   },
   created() {
     this.chosenCurrency = this.currencies[0]
-    this.filterCriteria = this.filterCriteriaItems[0]
+    this.sortCriteria.name = this.sortByItems[0]
     this.loadShops()
   },
   beforeMount() {
@@ -154,7 +163,7 @@ export default {
   },
   methods: {
     changeOrder() {
-      this.orderIndex = this.orderIndex ? 0 : 1
+      this.orderIndex = this.orderIndex ? ASC : DESC
     },
     changeCurrency(currency) {
       this.currencies[this.currencies.indexOf(this.chosenCurrency)].active = false

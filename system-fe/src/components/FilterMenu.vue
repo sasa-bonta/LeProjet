@@ -150,13 +150,16 @@ export default {
       getShops: 'shops/getShopsList',
       getProducts: 'products/getList',
     }),
-    getMin: function () {
+    getMin() {
       const min = Math.min(...this.getProducts.map(item => item.price))
       return Number.isFinite(min) ? min : 0
     },
-    getMax: function () {
+    getMax() {
       const max = Math.max(...this.getProducts.map(item => item.price))
       return Number.isFinite(max) ? max : 0
+    },
+    shops() {
+      return this.filterCriteria.shops
     },
   },
   created() {
@@ -169,9 +172,7 @@ export default {
   },
   watch: {
     getProducts: function () {
-      this.filterCriteria.minLimit = this.getMin
-      this.filterCriteria.maxLimit = this.getMax
-      this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
+      this.setAbsoluteLimits()
       this.filterProducts(this.filterCriteria)
     },
     getShops() {
@@ -189,6 +190,9 @@ export default {
       },
       deep: true,
     },
+    shops() {
+      this.changePriceLimits()
+    },
   },
   methods: {
     changeOrder() {
@@ -200,12 +204,35 @@ export default {
       this.currency = currency
     },
     filterProducts({minPrice, maxPrice, shops}) {
+      console.log(shops)
       this.filteredProductsList = this.getProducts.filter(item => shops.includes(item.provider) && (item.price >= minPrice) && (item.price <= maxPrice))
       console.log(this.filteredProductsList)
     },
     ...mapActions({
       loadShops: 'shops/loadShopsList',
     }),
+    setAbsoluteLimits() {
+      this.filterCriteria.minLimit = this.getMin
+      this.filterCriteria.maxLimit = this.getMax
+      this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
+    },
+    changePriceLimits() {
+      this.setAbsoluteLimits()
+      this.filterProducts(this.filterCriteria)
+
+      const min = Math.min(...this.filteredProductsList.map(item => item.price))
+      this.filterCriteria.minLimit = Number.isFinite(min) ? min : 0
+      const max = Math.max(...this.filteredProductsList.map(item => item.price))
+      this.filterCriteria.maxLimit = Number.isFinite(max) ? max : 0
+
+      if ((this.filterCriteria.minPrice < this.filterCriteria.minLimit) || (this.filterCriteria.minLimit < this.filterCriteria.minPrice)) {
+        this.filterCriteria.minPrice = this.filterCriteria.minLimit
+      }
+
+      if (this.filterCriteria.maxPrice > this.filterCriteria.maxLimit) {
+        this.filterCriteria.maxPrice = this.filterCriteria.maxLimit
+      }
+    }
   },
 }
 </script>

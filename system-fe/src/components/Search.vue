@@ -19,10 +19,10 @@ export default {
     value: '',
   }),
   computed: {
-    path: function () {
+    path() {
       return this.$route.name
     },
-    isProductsPage: function () {
+    isProductsPage() {
       return this.path === 'products'
     },
   },

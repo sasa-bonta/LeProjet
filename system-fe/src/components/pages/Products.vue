@@ -1,5 +1,5 @@
 <template>
-  <pre>{{ getList }}</pre>
+  <pre>{{ getFilteredProducts }}</pre>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
   computed: {
     ...mapGetters({
       getIsLoading: 'products/getIsLoading',
-      getList: 'products/getList',
+      getFilteredProducts: 'products/getFilteredProducts',
     }),
     search: function () {
       return this.$route.query.search

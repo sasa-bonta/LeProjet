@@ -100,10 +100,11 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
+import {ASC, DESC} from "../store/modules/constants/constants";
 
-const ASC = 0;
-const DESC = 1;
+// const ASC = 0;
+// const DESC = 1;
 
 export default {
   name: "FilterMenu",
@@ -122,9 +123,7 @@ export default {
     sortCriteria: {
       name: '',
       order: ASC,
-      shops: [],
     },
-    filteredProductsList: [],
     filterCriteria: {
       minLimit: 0,
       maxLimit: 100,
@@ -149,6 +148,7 @@ export default {
       getIsShopsLoading: 'shops/getIsLoading',
       getShops: 'shops/getShopsList',
       getProducts: 'products/getList',
+      getFilteredProducts: 'products/getFilteredProducts',
     }),
     getMin() {
       const min = Math.min(...this.getProducts.map(item => item.price))
@@ -171,7 +171,7 @@ export default {
     this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
   },
   watch: {
-    getProducts: function () {
+    getProducts() {
       this.setAbsoluteLimits()
       this.filterProducts(this.filterCriteria)
     },
@@ -180,7 +180,7 @@ export default {
     },
     sortCriteria: {
       handler() {
-        // console.log(this.sortCriteria.name + " " + this.sortCriteria.order)
+        this.sortProducts(this.sortCriteria)
       },
       deep: true,
     },
@@ -204,12 +204,38 @@ export default {
       this.currency = currency
     },
     filterProducts({minPrice, maxPrice, shops}) {
-      console.log(shops)
-      this.filteredProductsList = this.getProducts.filter(item => shops.includes(item.provider) && (item.price >= minPrice) && (item.price <= maxPrice))
+      if (this.getProducts.length) {
+        this.mutateFilteredList(this.getProducts.filter(item =>
+          shops.includes(item.provider) &&
+          (item.price >= minPrice) &&
+          (item.price <= maxPrice)
+        ))
+        this.sortProducts(this.sortCriteria)
+      }
     },
     ...mapActions({
       loadShops: 'shops/loadShopsList',
     }),
+    ...mapMutations({
+      mutateFilteredList: 'products/mutateFilteredList',
+    }),
+    sortProducts({name, order}) {
+      let filteredProductsList = this.getFilteredProducts
+      if (filteredProductsList.length) {
+        if (name === 'Price') {
+          filteredProductsList.sort((a, b) => {
+            return a.price - b.price
+          })
+        }
+        if (name === 'Name') {
+          filteredProductsList.sort((a, b) => a.name.localeCompare(b.name))
+        }
+        if (order === DESC) {
+          filteredProductsList.reverse()
+        }
+        this.mutateFilteredList(filteredProductsList)
+      }
+    },
     setAbsoluteLimits() {
       this.filterCriteria.minLimit = this.getMin
       this.filterCriteria.maxLimit = this.getMax
@@ -219,9 +245,9 @@ export default {
       this.setAbsoluteLimits()
       this.filterProducts(this.filterCriteria)
 
-      const min = Math.min(...this.filteredProductsList.map(item => item.price))
+      const min = Math.min(...this.getFilteredProducts.map(item => item.price))
       this.filterCriteria.minLimit = Number.isFinite(min) ? min : 0
-      const max = Math.max(...this.filteredProductsList.map(item => item.price))
+      const max = Math.max(...this.getFilteredProducts.map(item => item.price))
       this.filterCriteria.maxLimit = Number.isFinite(max) ? max : 0
 
       if ((this.filterCriteria.minPrice < this.filterCriteria.minLimit) || (this.filterCriteria.minLimit < this.filterCriteria.minPrice)) {

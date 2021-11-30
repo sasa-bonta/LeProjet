@@ -1,13 +1,27 @@
 <template>
-  <pre>{{ getFilteredProducts }}</pre>
+  <!--  <pre>{{ getFilteredProducts }}</pre>-->
+
+  <v-row>
+    <v-col
+      v-for="item in getFilteredProducts"
+      :key="item.url"
+    >
+      <ProductItem
+        :item="item"
+      />
+    </v-col>
+  </v-row>
+
 </template>
 
 <script>
 
 import {mapActions, mapGetters} from "vuex";
+import ProductItem from "../ProductItem";
 
 export default {
   name: "Products",
+  components: {ProductItem},
   props: {
     link: {
       required: false,

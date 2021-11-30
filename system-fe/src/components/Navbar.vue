@@ -3,13 +3,14 @@
     app
     :color="$vuetify.theme.dark ? '' : 'white'"
     flat
+    elevation="3"
   >
     <v-container class="py-0 fill-height">
 
       <v-btn
         v-for="link in links"
-        :key="link.name"
         :to="{name: link.name}"
+        :key="link.name"
         text
       >
         {{ link.title }}

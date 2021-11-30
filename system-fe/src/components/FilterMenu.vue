@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="pt-3">
+    <v-spacer />
+    <h4 class="ml-6">Found: {{getFilteredProducts.length}} products</h4>
+
     <!-- Filter criteria, asc/desc -->
     <div
       class="d-flex justify-space-around"
@@ -96,6 +99,7 @@
         <h3>{{ currency.sign }}</h3>
       </v-btn>
     </v-card>
+
   </div>
 </template>
 

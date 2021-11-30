@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto fill-height card-outer"
+    class="mx-auto fill-height card-outer d-flex flex-column"
     max-width="344"
     rounded
     :color="`grey ${$vuetify.theme.dark ? 'darken-3' : 'lighten-5'}`"
@@ -16,13 +16,22 @@
       />
 
       <v-card-title
+        :class="`${$vuetify.theme.dark ? 'white' : 'black'}--text`"
       >
         {{ item.name }}
       </v-card-title>
     </a>
 
-    <v-card-subtitle>
+    <v-spacer />
+
+    <v-card-title>
       {{ item.price | formatPrice }}
+    </v-card-title>
+
+    <v-card-subtitle
+      class="d-flex"
+    >
+      {{ item.provider }}
     </v-card-subtitle>
 
   </v-card>

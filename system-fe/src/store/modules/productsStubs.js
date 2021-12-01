@@ -1,4 +1,4 @@
-export default  [
+export const productsStubs =  [
     {
         "name": "Apple iPhone 12 Pro6 ГБ/ 256 ГБ/ Graphite Серый",
         "price": "24199",

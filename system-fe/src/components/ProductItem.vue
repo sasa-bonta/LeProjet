@@ -11,6 +11,7 @@
       style="text-decoration: none;"
     >
       <v-img
+        class="rounded"
         :src="item.image"
         height="200px"
       />

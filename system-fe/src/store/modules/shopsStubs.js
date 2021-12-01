@@ -1,1 +1,1 @@
-export default ["enter", "darwin", "shopit"]
+export const shopsStubs =  ["enter", "darwin", "shopit"]

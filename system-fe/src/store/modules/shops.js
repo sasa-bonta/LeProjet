@@ -1,4 +1,4 @@
-import shopsStubs from "./shopsStubs";
+import {shopsStubs} from "./shopsStubs";
 
 export default {
     namespaced: true,

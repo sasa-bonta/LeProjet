@@ -1,4 +1,4 @@
-import productsStubs from './productsStubs'
+import {productsStubs} from './productsStubs'
 
 export default {
     namespaced: true,

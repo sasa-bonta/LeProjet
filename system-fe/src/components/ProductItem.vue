@@ -2,7 +2,7 @@
   <v-card
     class="mx-auto fill-height card-outer d-flex flex-column"
     max-width="344"
-    rounded
+    rounded="lg"
     :color="`grey ${$vuetify.theme.dark ? 'darken-3' : 'lighten-5'}`"
   >
     <a
@@ -11,7 +11,7 @@
       style="text-decoration: none;"
     >
       <v-img
-        class="rounded"
+        class="rounded-t-lg"
         :src="item.image"
         height="200px"
       />

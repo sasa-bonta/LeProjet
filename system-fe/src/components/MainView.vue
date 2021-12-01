@@ -2,7 +2,7 @@
   <v-sheet
     min-height="70vh"
     rounded="lg"
-    :class="$vuetify.theme.dark ? 'grey darken-2' : ''"
+    :class="`${$vuetify.theme.dark ? 'grey darken-2' : ''} px-3`"
   >
     <RouterView/>
     <ErrorSnackbar />

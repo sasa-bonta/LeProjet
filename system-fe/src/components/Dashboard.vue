@@ -9,7 +9,7 @@
             <SideMenu />
           </v-col>
 
-          <v-col cols="10">
+          <v-col cols="10" class="pt-6">
             <MainView/>
           </v-col>
         </v-row>

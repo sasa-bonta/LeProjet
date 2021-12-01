@@ -1,8 +1,13 @@
 <template>
   <!--  <pre>{{ getFilteredProducts }}</pre>-->
 
-  <v-row>
+  <v-row
+  >
     <v-col
+      sm="6"
+      md="4"
+      lg="3"
+      xl="2"
       v-for="item in getFilteredProducts"
       :key="item.url"
     >

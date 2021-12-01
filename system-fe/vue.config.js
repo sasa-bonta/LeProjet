@@ -17,6 +17,14 @@ module.exports = {
         ws: true,
         changeOrigin: true,
       },
+      '^/api/currencies': {
+        target: 'http://localhost:3000/currencies',
+        pathRewrite: {
+          '^/api/currencies': '',
+        },
+        ws: true,
+        changeOrigin: true,
+      },
     },
   },
   transpileDependencies: [

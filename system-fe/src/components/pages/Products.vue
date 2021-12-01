@@ -44,10 +44,12 @@ export default {
   watch: {
     $route() {
       this.loadProducts({search: this.search, page: this.page})
+      this.loadExchangeRates()
     },
     link: {
       handler() {
         this.loadProducts({search: this.search, page: this.page})
+        this.loadExchangeRates()
       },
       immediate: true,
     },
@@ -55,6 +57,7 @@ export default {
   methods: {
     ...mapActions({
       loadProducts: 'products/loadProducts',
+      loadExchangeRates: 'exchangeRates/loadExchangeRates',
     }),
   },
 }

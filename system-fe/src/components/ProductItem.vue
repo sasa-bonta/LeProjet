@@ -22,10 +22,10 @@
       </v-card-title>
     </a>
 
-    <v-spacer />
+    <v-spacer/>
 
     <v-card-title>
-      {{ item.price | formatPrice }}
+      {{ item.price / getCurrentCurrency.coefficient | formatPrice }} {{ getCurrentCurrency.symbol }}
     </v-card-title>
 
     <v-card-subtitle
@@ -40,6 +40,7 @@
 <script>
 import numeral from 'numeral';
 import Vue from "vue";
+import {mapGetters} from "vuex";
 
 Vue.filter("formatPrice", (val) => numeral(val).format("0,0.00"))
 
@@ -50,6 +51,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  computed: {
+    ...mapGetters({
+      getCurrentCurrency: 'exchangeRates/getCurrency',
+    }),
   },
 }
 </script>

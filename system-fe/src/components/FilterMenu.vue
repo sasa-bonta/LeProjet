@@ -1,7 +1,7 @@
 <template>
   <div class="pt-3">
-    <v-spacer />
-    <h4 class="ml-6">Found: {{getFilteredProducts.length}} products</h4>
+    <v-spacer/>
+    <h4 class="ml-6">Found: {{ getFilteredProducts.length }} products</h4>
 
     <!-- Filter criteria, asc/desc -->
     <div
@@ -48,7 +48,7 @@
 
       <v-row class="d-flex justify-lg-space-between">
         <v-text-field
-          :value="filterCriteria.range[0]"
+          :value="getMinPriceInCurrency(filterCriteria.range[0])"
           class="mt-0 pt-0 shrink ml-6"
           hide-details
           single-line
@@ -58,7 +58,7 @@
         ></v-text-field>
 
         <v-text-field
-          :value="filterCriteria.range[1]"
+          :value="getMaxPriceInCurrency(filterCriteria.range[1])"
           class="mt-0 pt-0 shrink mr-6"
           hide-details
           single-line
@@ -119,9 +119,9 @@ export default {
       {ord: 'Des', icon: 'south'},
     ],
     currenciesList: [
-      {name: 'mdl', sign: 'L', active: true},
-      {name: 'euro', sign: '€', active: false},
-      {name: 'dollar', sign: '$', active: false},
+      {name: 'MDL', sign: 'L', active: true},
+      {name: 'EUR', sign: '€', active: false},
+      {name: 'USD', sign: '$', active: false},
     ],
     currency: {},
     sortCriteria: {
@@ -153,6 +153,8 @@ export default {
       getShops: 'shops/getShopsList',
       getProducts: 'products/getList',
       getFilteredProducts: 'products/getFilteredProducts',
+      getExchangeRates: 'exchangeRates/getExchangeRates',
+      getCurrentCurrency: 'exchangeRates/getCurrency',
     }),
     getMin() {
       const min = Math.min(...this.getProducts.map(item => item.price))
@@ -203,9 +205,15 @@ export default {
       this.sortCriteria.order = this.sortCriteria.order ? ASC : DESC
     },
     changeCurrency(currency) {
-      this.currenciesList[this.currenciesList.indexOf(this.currency)].active = false
-      this.currenciesList[this.currenciesList.indexOf(currency)].active = true
-      this.currency = currency
+      if (this.getExchangeRates.length) {
+        this.currenciesList[this.currenciesList.indexOf(this.currency)].active = false
+        this.currenciesList[this.currenciesList.indexOf(currency)].active = true
+        this.currency = currency
+        const currencyRate = this.getExchangeRates.find(val => val.currency === currency.name)?.rate ?? 1
+        this.mutateCurrency({coefficient: currencyRate, symbol: currency.sign})
+      }
+      // console.log(this.filterCriteria.minLimit + " --- " + this.filterCriteria.maxLimit + " :::: " + this.filterCriteria.minPrice + " --- " + this.filterCriteria.maxPrice)
+      // console.log(this.filterCriteria.range[0] + " = " + this.filterCriteria.range[1])
     },
     filterProducts({minPrice, maxPrice, shops}) {
       if (this.getProducts.length) {
@@ -222,6 +230,7 @@ export default {
     }),
     ...mapMutations({
       mutateFilteredList: 'products/mutateFilteredList',
+      mutateCurrency: 'exchangeRates/mutateCurrency',
     }),
     sortProducts({name, order}) {
       let filteredProductsList = this.getFilteredProducts
@@ -254,6 +263,9 @@ export default {
       const max = Math.max(...this.getFilteredProducts.map(item => item.price))
       this.filterCriteria.maxLimit = Number.isFinite(max) ? max : 0
 
+      // console.log("current currency: " + this.getCurrentCurrency.coefficient)
+      // console.log("min: " + min / this.getCurrentCurrency.coefficient + " max: " + max / this.getCurrentCurrency.coefficient)
+
       if ((this.filterCriteria.minPrice < this.filterCriteria.minLimit) || (this.filterCriteria.minLimit < this.filterCriteria.minPrice)) {
         this.filterCriteria.minPrice = this.filterCriteria.minLimit
       }
@@ -261,7 +273,13 @@ export default {
       if (this.filterCriteria.maxPrice > this.filterCriteria.maxLimit) {
         this.filterCriteria.maxPrice = this.filterCriteria.maxLimit
       }
-    }
+    },
+    getMinPriceInCurrency(price) {
+      return Math.floor(price / this.getCurrentCurrency.coefficient)
+    },
+    getMaxPriceInCurrency(price) {
+      return Math.ceil(price / this.getCurrentCurrency.coefficient)
+    },
   },
 }
 </script>

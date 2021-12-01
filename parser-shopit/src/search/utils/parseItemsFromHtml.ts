@@ -11,6 +11,5 @@ export default (html) => {
       url: $(this).find('a').attr('href'),
     });
   });
-  console.log(result);
   return result;
 };

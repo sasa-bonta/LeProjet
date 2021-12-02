@@ -1,11 +1,11 @@
 export default [
   {
-    name: 'darwin',
+    name: 'enter',
     url: 'http://localhost:5000/',
     paginated: false,
   },
   {
-    name: 'enter',
+    name: 'darwin',
     url: 'http://localhost:5001/',
     paginated: true,
   },

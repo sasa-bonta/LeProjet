@@ -1,6 +1,6 @@
 // import {productsStubs} from './productsStubs'
 
-import {fetchProducts} from "../../apis/apis";
+import {fetchProducts} from "../../api/api";
 
 export default {
     namespaced: true,

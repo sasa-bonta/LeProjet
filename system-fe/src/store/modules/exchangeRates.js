@@ -1,5 +1,5 @@
 // import {exchangeRatesStubs} from './exchangeRatesStubs'
-import {fetchExchangeRates} from "../../apis/apis";
+import {fetchExchangeRates} from "../../api/api";
 
 function getTodayDate() {
     const today = new Date();
@@ -15,21 +15,27 @@ function getTodayDate() {
     return `${dd}.${mm}.${year}`
 }
 
+export const state = {
+    exchangeRatesList: [],
+    currentCurrency: {coefficient: 1, symbol: 'L'},
+    isLoading: false,
+}
+
 export default {
     namespaced: true,
-    state: {
-        exchangeRatesList: [],
-        currentCurrency: {coefficient: 1, symbol: 'L'}
-    },
+    state,
     getters: {
         getExchangeRates: (state) => state.exchangeRatesList,
         getCurrency: (state) => state.currentCurrency,
+        getIsLoading: (state) => state.isLoading,
     },
     actions: {
         async loadExchangeRates(store) {
+            store.commit('mutateIsLoading', true)
             const exchangeRates = await fetchExchangeRates(getTodayDate())
             // let exchangeRates = exchangeRatesStubs
             store.commit('mutateExchangeRatesList', exchangeRates.data)
+            store.commit('mutateIsLoading', false)
         },
     },
     mutations: {
@@ -38,6 +44,9 @@ export default {
         },
         mutateCurrency(state, payload) {
             state.currentCurrency = payload
+        },
+        mutateIsLoading(state, payload) {
+            state.isLoading = payload
         },
     },
 }

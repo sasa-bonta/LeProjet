@@ -1,12 +1,15 @@
 // import {shopsStubs} from "./shopsStubs";
-import {fetchShops} from "../../apis/apis";
+import {fetchShops} from "../../api/api";
+
+export const state = {
+        shopsList: [],
+        isLoading: false,
+}
+
 
 export default {
     namespaced: true,
-    state: {
-        shopsList: [],
-        isLoading: false,
-    },
+    state,
     getters: {
         getShopsList: (state) => state.shopsList,
         getIsLoading: (state) => state.isLoading,

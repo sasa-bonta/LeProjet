@@ -1,4 +1,5 @@
-import {shopsStubs} from "./shopsStubs";
+// import {shopsStubs} from "./shopsStubs";
+import {fetchShops} from "../../apis/apis";
 
 export default {
     namespaced: true,
@@ -14,10 +15,9 @@ export default {
         async loadShopsList(store) {
             store.commit('mutateLoading', true)
             store.commit('mutateShopsList', [])
-            // let shops = await fetch(`/api/shops`)
-            // shops = await shops.json()
-            let shops = shopsStubs
-            store.commit('mutateShopsList', shops)
+            const shops = await fetchShops()
+            // let shops = shopsStubs
+            store.commit('mutateShopsList', shops.data)
             store.commit('mutateLoading', false)
         },
     },

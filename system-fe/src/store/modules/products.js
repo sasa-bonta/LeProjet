@@ -1,4 +1,6 @@
-import {productsStubs} from './productsStubs'
+// import {productsStubs} from './productsStubs'
+
+import {fetchProducts} from "../../apis/apis";
 
 export default {
     namespaced: true,
@@ -13,13 +15,12 @@ export default {
         getIsLoading: (state) => state.isLoading,
     },
     actions: {
-        async loadProducts(store, /*{search, page = 1}*/) {
+        async loadProducts(store, {search, page = 1}) {
             store.commit('mutateLoading', true)
             store.commit('mutateList', [])
-            // let products = await fetch(`/api/products?search=${search}&page=${page}`)
-            // products = await products.json()
-            let products = productsStubs
-            store.commit('mutateList', products.map(item => ({
+            const products = await fetchProducts({search: search, page: page})
+            // let products = productsStubs
+            store.commit('mutateList', products.data.map(item => ({
                 name: item.name,
                 image: item.image,
                 url: item.url,

@@ -1,6 +1,7 @@
-import {exchangeRatesStubs} from './exchangeRatesStubs'
+// import {exchangeRatesStubs} from './exchangeRatesStubs'
+import {fetchExchangeRates} from "../../apis/apis";
 
-/*function getTodayDate() {
+function getTodayDate() {
     const today = new Date();
     let dd = today.getDate()
     if (dd < 10) {
@@ -12,7 +13,7 @@ import {exchangeRatesStubs} from './exchangeRatesStubs'
     }
     let year = today.getFullYear()
     return `${dd}.${mm}.${year}`
-}*/
+}
 
 export default {
     namespaced: true,
@@ -26,10 +27,9 @@ export default {
     },
     actions: {
         async loadExchangeRates(store) {
-            // let exchangeRates = await fetch(`/api/currencies?date=${getTodayDate()}`)
-            // exchangeRates = await exchangeRates.json()
-            let exchangeRates = exchangeRatesStubs
-            store.commit('mutateExchangeRatesList', exchangeRates)
+            const exchangeRates = await fetchExchangeRates(getTodayDate())
+            // let exchangeRates = exchangeRatesStubs
+            store.commit('mutateExchangeRatesList', exchangeRates.data)
         },
     },
     mutations: {

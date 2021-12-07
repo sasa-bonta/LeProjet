@@ -1,6 +1,6 @@
 export const state = {
     isDarkModeEnabled: false,
-    lang: 'md',
+    language: 'md',
 }
 
 export default {
@@ -8,7 +8,7 @@ export default {
     state,
     getters: {
         getDarkModeEnabled: (state) => state.isDarkModeEnabled,
-        getLanguage: (state) => state.lang
+        getLanguage: (state) => state.language
     },
     actions: {},
     mutations: {
@@ -16,7 +16,7 @@ export default {
             state.isDarkModeEnabled = payload
         },
         mutateLanguage(state, payload) {
-            state.lang = payload
+            state.language = payload
         }
     },
 }

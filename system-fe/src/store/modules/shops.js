@@ -1,9 +1,9 @@
-// import {shopsStubs} from "./shopsStubs";
+// import {shopsListStubs} from "../tests/shopsStubs";
 import {fetchShops} from "../../api/api";
 
 export const state = {
-        shopsList: [],
-        isLoading: false,
+    shopsList: [],
+    isLoading: false,
 }
 
 
@@ -19,7 +19,7 @@ export default {
             store.commit('mutateLoading', true)
             store.commit('mutateShopsList', [])
             const shops = await fetchShops()
-            // let shops = shopsStubs
+            // const shops = {data: shopsListStubs}
             store.commit('mutateShopsList', shops.data)
             store.commit('mutateLoading', false)
         },

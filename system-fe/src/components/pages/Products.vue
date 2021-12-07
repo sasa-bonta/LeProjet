@@ -1,27 +1,25 @@
 <template>
   <!--  <pre>{{ getFilteredProducts }}</pre>-->
 
-  <v-row
-  >
+  <v-row>
     <v-col
+      v-for="item in getFilteredProducts"
+      :key="item.url"
       sm="6"
       md="4"
       lg="3"
       xl="2"
-      v-for="item in getFilteredProducts"
-      :key="item.url"
     >
       <ProductItem
         :item="item"
       />
     </v-col>
   </v-row>
-
 </template>
 
 <script>
 
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import ProductItem from "./ProductItem";
 
 export default {
@@ -48,11 +46,13 @@ export default {
   },
   watch: {
     $route() {
+      this.mutateProductsList([])
       this.loadProducts({search: this.search, page: this.page})
       this.loadExchangeRates()
     },
     link: {
       handler() {
+        this.mutateProductsList([])
         this.loadProducts({search: this.search, page: this.page})
         this.loadExchangeRates()
       },
@@ -63,6 +63,9 @@ export default {
     ...mapActions({
       loadProducts: 'products/loadProducts',
       loadExchangeRates: 'exchangeRates/loadExchangeRates',
+    }),
+    ...mapMutations({
+      mutateProductsList: 'products/mutateList'
     }),
   },
 }

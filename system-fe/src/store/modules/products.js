@@ -1,14 +1,15 @@
-// import {productsStubs} from './productsStubs'
-
+// import {productsStubs} from "../tests/productsStubs";
 import {fetchProducts} from "../../api/api";
+
+export const state = {
+    list: [],
+    filteredList: [],
+    isLoading: false,
+}
 
 export default {
     namespaced: true,
-    state: {
-        list: [],
-        filteredList: [],
-        isLoading: false,
-    },
+    state,
     getters: {
         getList: (state) => state.list,
         getFilteredProducts: (state) => state.filteredList,
@@ -17,10 +18,10 @@ export default {
     actions: {
         async loadProducts(store, {search, page = 1}) {
             store.commit('mutateLoading', true)
-            store.commit('mutateList', [])
             const products = await fetchProducts({search: search, page: page})
-            // let products = productsStubs
-            store.commit('mutateList', products.data.map(item => ({
+            // const products = {data: productsStubs}
+            const mutation = (page > 1) ? 'mutateAppendList' : 'mutateList'
+            store.commit(mutation, products.data.map(item => ({
                 name: item.name,
                 image: item.image,
                 url: item.url,

@@ -1,4 +1,8 @@
-export const productsStubs = [{
+export let productsStubs
+export let productsStubs2
+export let productsStubsCheckPrice
+
+productsStubs = [{
     "name": "Apple iPhone 114 ГБ/ 128 ГБ/ Single SIM/ Черный/",
     "price": "15999",
     "image": "https://enter.online/images/thumbnails/200/200/detailed/84/apple_iphone_11_black1qq_1618210611500.png",
@@ -3658,4 +3662,382 @@ export const productsStubs = [{
     "image": "https://shopit.md/assets/index/images/no-photo.png",
     "url": "https://shopit.md/ru/katalog/telefony/aksessuary-dlya-telefonov/pelicula-protectie/pentru-apple/xcover-sticla-protectie-p-u-iphone-11-xr-full-glue-103220.html",
     "provider": "shopit"
+}]
+
+
+productsStubs2 = [{
+    "name": "Apple iPhone SE 20203 ГБ/ 64 ГБ/ Single SIM/ Белый/",
+    "price": "9999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_white1_zg4a-41.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-64-gb-belyy-3-gb-64-gb-single-sim-belyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple iPhone SE 20203 Гб/ 64 ГБ/ Черный",
+    "price": "9999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_black1eee.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-64-gb-chernyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple iPhone SE 20203 Гб/ 128 Гб/ Черный",
+    "price": "10499",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_black1_gfex-xe.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-128-gb-chernyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple iPhone SE 20203 Гб/ 64 ГБ/ Красный",
+    "price": "9999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_red1.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-64-gb-krasnyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple iPhone SE 20203 Гб/ 128 Гб/ Белый",
+    "price": "10499",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_white1_wv6s-wp.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-128-gb-belyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple iPhone SE 20203 Гб/ 128 Гб/ Красный",
+    "price": "10499",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_red1_2prl-vo.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-128-gb-krasnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods (2-го поколения) с футляром для беспроводной зарядки БелыйБеспроводные/ Персональный/ MRXJ2RU/A",
+    "price": "3999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/75/apple_airpods2_mrxj2ru_a1.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/naushniki-apple-airpods-2-go-pokoleniya-s-futlyarom-dlya-besprovodnoy-zaryadki-belyy-besprovodnye-personalnyy-mrxj2ru-a/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods Pro БелыйБеспроводные/ Персональный",
+    "price": "5299",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/86/apple_airpods_pro_white1.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/naushniki-apple-airpods-pro-belyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods (a 2-a generație) БелыйБеспроводные/ Персональный",
+    "price": "3399",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/75/apple_airpods2_mv7n2ru_a1.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/naushniki-apple-airpods-2-go-pokoleniya-s-futlyarom-dlya-zaryadki-belyy-besprovodnye-personalnyy-mv7n2ru-a/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Hoco ES36 Airpods Pro с футляром для беспроводной зарядки БелыйБеспроводные/ Персональный",
+    "price": "999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/89/hoco_es36_white_1.png",
+    "url": "https://enter.online/ru/aksessuary/dlya-telefonov/naushniki/naushniki-hoco-es36-airpods-pro-s-futlyarom-dlya-besprovodnoy-zaryadki-belyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods 3 БелыйБеспроводные/ Персональный",
+    "price": "4699",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/191/apple_airpods_3_white_1_1634626812135.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/apple-airpods-3-belyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods Max ЗелёныйБеспроводные/ Персональный",
+    "price": "15999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/128/apple_airpods_max_green_1_1619001800490.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/apple-airpods-max-zelyonyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Hoco EW01 Airpods 2 БелыйБеспроводные/ Персональный",
+    "price": "799",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/176/hoco_ew01_white_1_1632302211390.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/hoco-ew01-airpods-2-belyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods Max СеребристыйБеспроводные/ Персональный",
+    "price": "15999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/128/apple_airpods_max_silver_1_1619001698306.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/apple-airpods-max-serebristyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods Max Space СерыйБеспроводные/ Персональный",
+    "price": "15999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/128/apple_airpods_max_space_gray_1_1619000089664.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/apple-airpods-max-space-seryy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods Max Sky СинийБеспроводные/ Персональный",
+    "price": "15999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/128/apple_airpods_max_sky_blue_3_1619001955327.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/apple-airpods-max-sky-siniy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods Max РозовыйБеспроводные/ Персональный",
+    "price": "15999",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/128/apple_airpods_max_pink_1_1619002456544.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/apple-airpods-max-rozovyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Чехол для наушников Apple AirPods Pro (Slim)Силикон / Черный",
+    "price": "149",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/166/husa_airpods_pro_black_1_1630479022296.png",
+    "url": "https://enter.online/ru/aksessuary/chehly-dlya-naushnikov/chehol-pentru-casti-apple-airpods-pro-slim-silicon-chernyy-silicon-chernyy/",
+    "provider": "enter"
+}, {
+    "name": "Наушники Apple AirPods PRO with MagSafe Charging Case MagSafe $[specificaţii.value.131] БелыйБеспроводные/ Персональный",
+    "price": "5599",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/201/apple_airpods_pro_white_41_1636623182334.png",
+    "url": "https://enter.online/ru/audiotehnika/naushniki/apple-airpods-pro-with-magsafe-charging-case-magsafe-specificatii-value-131-belyy-besprovodnye-personalnyy/",
+    "provider": "enter"
+}, {
+    "name": "Чехол для наушников Apple AirPods 2 (Slim)TPU / Зелёный",
+    "price": "149",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/166/case_ultra_slim_for_airpods_2_pine_green_3d_1630486419574.png",
+    "url": "https://enter.online/ru/aksessuary/chehly-dlya-naushnikov/apple-airpods-2-slim-tpu-zelenyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple AirPods Pro, Белый",
+    "price": "5 299",
+    "image": "https://darwin.md/images/product/thumbs/2020/12/apple_airpods_pro_white_1.png",
+    "url": "https://darwin.md/ru/apple-airpods-pro-white.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Apple AirPods PRO with MagSafe Charging Case Белый",
+    "price": "5 599",
+    "image": "https://darwin.md/images/product/thumbs/2021/11/darwin-casti-apple-airpods-pro-white-093.png",
+    "url": "https://darwin.md/ru/nausniki-apple-airpods-pro-belyi.html",
+    "provider": "darwin"
+}, {
+    "name": "Apple AirPods (2Gen) with Charging Case, Белый",
+    "price": "3 399",
+    "image": "https://darwin.md/images/product/thumbs/2020/12/apple_airpods_v2_white_1.png",
+    "url": "https://darwin.md/ru/new-airpods-2.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Apple AirPods 3 Белый",
+    "price": "4 699",
+    "image": "https://darwin.md/images/product/thumbs/2021/10/darwin-casti-apple-airpods-3-white-017.png",
+    "url": "https://darwin.md/ru/nausniki-apple-airpods-3-belyi.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол беспроводной зарядки для наушников Apple AirPods (A5), Белый",
+    "price": "249",
+    "image": "https://darwin.md/images/product/thumbs/2021/03/husa_husa_airpods_wh_1.png",
+    "url": "https://darwin.md/ru/airpods-wireless-charging-case-a5-white.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники TWireless Hoco ES36 Airpods Pro, Белый",
+    "price": "999",
+    "image": "https://darwin.md/images/product/thumbs/2020/07/hoco_es36_white_1.png",
+    "url": "https://darwin.md/ru/hoco-es36-airpods-pro-white.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Apple AirPods Max, Серебряный",
+    "price": "15 999",
+    "image": "https://darwin.md/images/product/thumbs/2021/01/apple_airpods_max_silver_1.png",
+    "url": "https://darwin.md/ru/apple-airpods-max-silver.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол Usams US-BH569 AirPods Pro, Черный",
+    "price": "99",
+    "image": "https://darwin.md/images/product/thumbs/2021/04/husa_usams_us_bh569_airpods_pro_black_1d.png",
+    "url": "https://darwin.md/ru/us-bh569-airpods-pro-usams-black-tpu.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Apple AirPods Max, Зеленый",
+    "price": "15 999",
+    "image": "https://darwin.md/images/product/thumbs/2021/01/apple_airpods_green_1.png",
+    "url": "https://darwin.md/ru/apple-airpods-max-green.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол Usams US-BH568 AirPods Pro, Черный",
+    "price": "149",
+    "image": "https://darwin.md/images/product/thumbs/2021/04/husa_sams_us_bh568_black_1d.png",
+    "url": "https://darwin.md/ru/us-bh568-airpods-pro-usams-black-tpu.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Apple AirPods Max, Серый Космос",
+    "price": "15 999",
+    "image": "https://darwin.md/images/product/thumbs/2021/01/apple_airpods_max_space_gray_1.png",
+    "url": "https://darwin.md/ru/apple-airpods-max-space-gray.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Hoco EW01 Airpods 2 Белый",
+    "price": "799",
+    "image": "https://darwin.md/images/product/thumbs/2021/09/darwin-casti-hoco-ew01-airpods-2-white-078.png",
+    "url": "https://darwin.md/ru/nausniki-hoco-ew01-airpods-2-belyi.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол Usams US-BH569 AirPods Pro, Зеленый",
+    "price": "99",
+    "image": "https://darwin.md/images/product/thumbs/2021/04/husa_usams_us_bh569_airpods_pro_1d.png",
+    "url": "https://darwin.md/ru/us-bh569-airpods-pro-usams-green-tpu.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол Usams US-BH570 AirPods Pro, Transparent",
+    "price": "99",
+    "image": "https://darwin.md/images/product/thumbs/2021/04/usams_us_bh570_airpods_pro_1d.png",
+    "url": "https://darwin.md/ru/us-bh570-airpods-pro-usams-transparent-tpu.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Apple AirPods Max, Розовый",
+    "price": "15 999",
+    "image": "https://darwin.md/images/product/thumbs/2021/01/apple_airpods_max_pink_1.png",
+    "url": "https://darwin.md/ru/apple-airpods-max-pink.html",
+    "provider": "darwin"
+}, {
+    "name": "Наушники Apple AirPods Max, Небесно Голубой",
+    "price": "15 999",
+    "image": "https://darwin.md/images/product/thumbs/2021/01/apple_airpods_blue_1.png",
+    "url": "https://darwin.md/ru/apple-airpods-max-sky-blue.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол Usams US-BH570 AirPods Pro, Transparent Green",
+    "price": "99",
+    "image": "https://darwin.md/images/product/thumbs/2021/04/usams_us_bh570_airpods_pro__green1d.png",
+    "url": "https://darwin.md/ru/us-bh570-airpods-pro-usams-transparent-green-tpu.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол Ugreen для Apple Airpods Pro, Красный",
+    "price": "149",
+    "image": "https://darwin.md/images/product/thumbs/2021/02/husa_silicone_pt_apple_airpods_pro_5d.png",
+    "url": "https://darwin.md/ru/husa-silicone-pt-apple-airpods-pro-ugreen-red.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол Ugreen для Apple Airpods Pro, Чёрный",
+    "price": "149",
+    "image": "https://darwin.md/images/product/thumbs/2021/02/husa_silicone_pt_apple_airpods_pro_4.png",
+    "url": "https://darwin.md/ru/husa-silicone-pt-apple-airpods-pro-ugreen-black.html",
+    "provider": "darwin"
+}, {
+    "name": "Чехол для наушников Apple AirPods 2 (Slim) Черный",
+    "price": "149",
+    "image": "https://darwin.md/images/product/thumbs/2021/09/darwin-husa-pentru-casti-apple-airpods-2-slim-black-038.png",
+    "url": "https://darwin.md/ru/cexol-dlya-nausnikov-apple-airpods-2-slim-cernyi.html",
+    "provider": "darwin"
+}, {
+    "name": "Apple AirPods 2",
+    "price": "3950.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0074/74301/_preview/600x600/dz5qko.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/bluetooth-with-charging-case-74301.html",
+    "provider": "shopit"
+}, {
+    "name": "Apple AirPods PRO",
+    "price": "4774.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0079/79391/_preview/600x600/bjo1ua.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/bluetooth-naushniki-s-mikrofonom-charging-case-79391.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods 1&2 Canvas Case",
+    "price": "79.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0081/81165/_preview/600x600/fy6qnr.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/with-hang-grey-81165.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods 1&2 Canvas Case",
+    "price": "79.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0081/81166/_preview/600x600/ts6iys.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/with-hang-pink-81166.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods 1&2 Canvas Case",
+    "price": "79.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0081/81167/_preview/600x600/sz40yw.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/with-hang-red-81167.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods 2 Silicone Case",
+    "price": "88.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0081/81169/_preview/600x600/luc2dp.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/mixed-colors-81169.html",
+    "provider": "shopit"
+}, {
+    "name": "AirPods Case Electroplated TPU",
+    "price": "133.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0081/81181/_preview/600x600/sk7a1r.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/black-81181.html",
+    "provider": "shopit"
+}, {
+    "name": "AirPods Case Electroplated TPU",
+    "price": "133.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0081/81182/_preview/600x600/p962gm.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/white-81182.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods Dual Color Silicone Case",
+    "price": "56.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0081/81183/_preview/600x600/cyp1zj.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/with-hang-mixed-colors-81183.html",
+    "provider": "shopit"
+}, {
+    "name": "Apple AirPods 2",
+    "price": "3092.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0085/85145/_preview/600x600/vcwtf8.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/bluetooth-85145.html",
+    "provider": "shopit"
+}, {
+    "name": "HOCO WB10",
+    "price": "144.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0085/85723/_preview/600x600/u5hncn.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/silicone-case-for-airpods-2-black-85723.html",
+    "provider": "shopit"
+}, {
+    "name": "Hoco WB10",
+    "price": "144.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0089/89119/_preview/600x600/tglld3.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/silicone-case-for-airpods-2-89119.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods 1&2 Canvas Case",
+    "price": "79.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0089/89926/_preview/600x600/i3idma.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/with-hang-black-89926.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods 1&2 Canvas Case",
+    "price": "79.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0089/89927/_preview/600x600/xvt9ua.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/with-hang-blue-89927.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods 1&2 Canvas Case",
+    "price": "79.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0089/89928/_preview/600x600/rv6txm.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/with-hang-green-89928.html",
+    "provider": "shopit"
+}, {
+    "name": "AirPods Case Electroplated TPU",
+    "price": "133.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0089/89929/_preview/600x600/n0av0g.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/gold-89929.html",
+    "provider": "shopit"
+}, {
+    "name": "Airpods Pro Silicone Case",
+    "price": "91.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0095/95792/_preview/600x600/wvsu3l.jpg",
+    "url": "https://shopit.md/ru/katalog/noutbuki-i-planshety/aksessuary/aksessuary-dlya-apple/mixed-colors-95792.html",
+    "provider": "shopit"
+}, {
+    "name": "Helmet AirPods 2 Macaron",
+    "price": "260.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0099/99799/_preview/600x600/f8tucl.jpg",
+    "url": "https://shopit.md/ru/katalog/kompyuternye-komponenty/naushniki-i-kolonki/helmet/bluetooth-naushniki-s-mikrofonom-99799.html",
+    "provider": "shopit"
+}, {
+    "name": "Helmet Airpods Pro",
+    "price": "184.00",
+    "image": "https://shopit.md/data/pic/catalog/item/0099/99800/_preview/600x600/zk6wgp.jpg",
+    "url": "https://shopit.md/ru/katalog/kompyuternye-komponenty/naushniki-i-kolonki/helmet/bluetooth-naushniki-s-mikrofonom-99800.html",
+    "provider": "shopit"
+}]
+
+
+productsStubsCheckPrice = [{
+    "name": "Apple iPhone 1",
+    "price": "99 99",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_white1_zg4a-41.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-64-gb-belyy-3-gb-64-gb-single-sim-belyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple iPhone 2",
+    "price": " 9999 ",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_black1eee.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-64-gb-chernyy/",
+    "provider": "enter"
+}, {
+    "name": "Apple iPhone 2",
+    "price": " 104 99 ",
+    "image": "https://enter.online/images/thumbnails/200/200/detailed/93/apple_iphone_se_2020_black1_gfex-xe.png",
+    "url": "https://enter.online/ru/telefony/smartfony/apple-iphone-se-2020-3-gb-128-gb-chernyy/",
+    "provider": "enter"
 }]

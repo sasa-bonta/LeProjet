@@ -2,7 +2,7 @@ import {exchangeRates} from "../modules";
 import {state} from '../modules/exchangeRates'
 import Vuex from "vuex";
 import Vue from "vue";
-import {currenciesList, dollar} from "./exchangeRatesStubs";
+import {exchangeRatesStubs, dollarStub} from "./exchangeRatesStubs";
 import {fetchExchangeRates} from "../../api/api";
 
 Vue.use(Vuex)
@@ -15,10 +15,10 @@ jest.mock('../../api/api', () => ({
     fetchExchangeRates: jest.fn()
 }))
 
-describe('exchange rates', ()=> {
+describe('exchange rates', () => {
     beforeEach(() => {
         fetchExchangeRates.mockReturnValue({
-            data: currenciesList
+            data: exchangeRatesStubs
         })
     })
     it('should have default values', function () {
@@ -33,18 +33,18 @@ describe('exchange rates', ()=> {
         expect(store.getters['exchangeRates/getIsLoading']).toBeFalsy()
     });
     it('should mutate currency', function () {
-        store.commit('exchangeRates/mutateCurrency', dollar)
-        expect(store.getters['exchangeRates/getCurrency']).toEqual(dollar)
+        store.commit('exchangeRates/mutateCurrency', dollarStub)
+        expect(store.getters['exchangeRates/getCurrency']).toEqual(dollarStub)
     });
     it('should mutate exchange rates list', function () {
-        store.commit('exchangeRates/mutateExchangeRatesList', currenciesList)
-        expect(store.getters['exchangeRates/getExchangeRates']).toEqual(currenciesList)
+        store.commit('exchangeRates/mutateExchangeRatesList', exchangeRatesStubs)
+        expect(store.getters['exchangeRates/getExchangeRates']).toEqual(exchangeRatesStubs)
     });
-    it('should load exchange rates', async function () {
+    it('should load exchange rates and change isLoading', async function () {
         const action = store.dispatch('exchangeRates/loadExchangeRates')
         expect(store.getters['exchangeRates/getIsLoading']).toBeTruthy()
         await action
         expect(store.getters['exchangeRates/getIsLoading']).toBeFalsy()
-        expect(store.getters['exchangeRates/getExchangeRates']).toHaveLength(currenciesList.length)
+        expect(store.getters['exchangeRates/getExchangeRates']).toHaveLength(exchangeRatesStubs.length)
     });
 })

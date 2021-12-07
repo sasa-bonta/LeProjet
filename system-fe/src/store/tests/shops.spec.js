@@ -3,7 +3,7 @@ import {state} from '../modules/shops'
 import Vuex from "vuex";
 import Vue from "vue";
 import {fetchShops} from "../../api/api";
-import {shopsList} from "./shopsStubs";
+import {shopsListStubs} from "./shopsStubs";
 
 Vue.use(Vuex)
 
@@ -18,7 +18,7 @@ jest.mock('../../api/api', () => ({
 describe('shops', () => {
     beforeEach(() => {
         fetchShops.mockReturnValue({
-            data: shopsList
+            data: shopsListStubs
         })
     })
     it('should have default values', function () {
@@ -32,8 +32,8 @@ describe('shops', () => {
         expect(store.getters['shops/getIsLoading']).toBeFalsy()
     });
     it('should should mutate shops list', function () {
-        store.commit('shops/mutateShopsList', shopsList)
-        expect(store.getters['shops/getShopsList']).toEqual(shopsList)
+        store.commit('shops/mutateShopsList', shopsListStubs.data)
+        expect(store.getters['shops/getShopsList']).toEqual(shopsListStubs.data)
     });
     it('should load shops', async function () {
         const action = store.dispatch('shops/loadShopsList')

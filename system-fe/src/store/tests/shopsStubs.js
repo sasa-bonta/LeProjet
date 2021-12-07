@@ -1,1 +1,1 @@
-export const shopsList =  ["enter", "darwin", "shopit"]
+export const shopsListStubs = ["enter", "darwin", "shopit"]

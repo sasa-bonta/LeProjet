@@ -1,8 +1,10 @@
+export const state = {
+    isDarkModeEnabled: false,
+}
+
 export default {
     namespaced: true,
-    state: {
-        isDarkModeEnabled: false,
-    },
+    state,
     getters: {
         getDarkModeEnabled: (state) => state.isDarkModeEnabled
     },

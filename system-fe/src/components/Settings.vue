@@ -1,11 +1,15 @@
 <template>
-  <v-menu offset-y :close-on-content-click="false">
+  <v-menu
+    offset-y
+    :close-on-content-click="false"
+  >
     <template v-slot:activator="{ on, attrs }">
       <v-icon
         v-bind="attrs"
-        v-on="on"
         class="crossRotate"
-      >settings
+        v-on="on"
+      >
+        settings
       </v-icon>
     </template>
 
@@ -16,21 +20,24 @@
         >
           <v-btn
             v-for="language in languages"
-            :key="language"
+            :key="language.lang"
             text
             class="d-flex justify-center"
+            :disabled="language.active"
+            @click="changeLanguage(language)"
           >
             <country-flag
-              :country="language"
+              :country="language.flag"
               rounded
               shadow
               class="mb-1"
-              size='normal'/>
+              size="normal"
+            />
           </v-btn>
         </v-list-item-title>
       </v-list-item>
 
-      <v-divider class="mt-2 mb-2"/>
+      <v-divider class="mt-2 mb-2" />
 
       <v-list-item>
         <v-switch
@@ -38,29 +45,31 @@
           inset
           :label="`Dark mode : ${isDarkModeEnabled.toString()}`"
           @change="changeDarkMode"
-        ></v-switch>
+        />
       </v-list-item>
     </v-list>
   </v-menu>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import CountryFlag from 'vue-country-flag'
 
 export default {
   name: "Settings",
   components: {CountryFlag},
   data: () => ({
+    currentLanguage: {},
     languages: [
-      'md',
-      'ru',
-      'gb',
+      {flag: 'md', lang: 'md', active: false},
+      {flag: 'ru', lang: 'ru', active: false},
+      {flag: 'gb', lang: 'en', active: false},
     ],
   }),
   computed: {
     ...mapGetters({
-      isDarkModeEnabled: 'settings/getDarkModeEnabled'
+      isDarkModeEnabled: 'settings/getDarkModeEnabled',
+      getLanguage: 'settings/getLanguage',
     }),
   },
   watch: {
@@ -71,10 +80,23 @@ export default {
       immediate: true,
     },
   },
+  created() {
+    this.currentLanguage = this.languages[this.languages.findIndex(item => item.lang === this.getLanguage)]
+    this.languages[this.languages.indexOf(this.currentLanguage)].active = true
+  },
   methods: {
     changeDarkMode() {
       this.$store.commit('settings/setDarkModeEnabled', !this.isDarkModeEnabled)
     },
+    changeLanguage(language) {
+      this.languages[this.languages.indexOf(this.currentLanguage)].active = false
+      this.languages[this.languages.indexOf(language)].active = true
+      this.currentLanguage = language
+      this.mutateLanguage(language.lang)
+    },
+    ...mapMutations({
+      mutateLanguage: 'settings/mutateLanguage',
+    }),
   },
 }
 </script>

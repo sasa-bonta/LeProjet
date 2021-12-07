@@ -1,15 +1,17 @@
 <template>
   <div class="pt-3">
-    <v-spacer/>
-    <h4 class="ml-6">Found: {{ getFilteredProducts.length }} products</h4>
+    <v-spacer />
+    <h4 class="ml-6">
+      Found: {{ getFilteredProducts.length }} products
+    </h4>
 
     <!-- Filter criteria, asc/desc -->
     <div
       class="d-flex justify-space-around"
     >
       <v-select
-        :items="sortByItems"
         v-model="sortCriteria.name"
+        :items="sortByItems"
         label="Solo field"
         class="mt-6 ml-3"
         dense
@@ -23,8 +25,9 @@
         @click="changeOrder"
       >
         {{ order[sortCriteria.order].ord }}
-        <v-icon small> {{ order[sortCriteria.order].icon }}</v-icon>
-
+        <v-icon small>
+          {{ order[sortCriteria.order].icon }}
+        </v-icon>
       </v-btn>
     </div>
 
@@ -37,7 +40,7 @@
       multiple
       outlined
       class="mx-3"
-    ></v-select>
+    />
 
     <!-- Price range slider -->
     <v-card
@@ -55,7 +58,7 @@
           type="number"
           style="width: 60px"
           @change="$set(filterCriteria.range, 0, $event)"
-        ></v-text-field>
+        />
 
         <v-text-field
           :value="getMaxPriceInCurrency(filterCriteria.range[1])"
@@ -65,7 +68,7 @@
           type="number"
           style="width: 60px"
           @change="$set(filterCriteria.range, 1, $event)"
-        ></v-text-field>
+        />
       </v-row>
 
       <v-card-text>
@@ -77,8 +80,7 @@
               :min="filterCriteria.minLimit"
               hide-details
               class="align-center"
-            >
-            </v-range-slider>
+            />
           </v-col>
         </v-row>
       </v-card-text>
@@ -99,7 +101,6 @@
         <h3>{{ currency.sign }}</h3>
       </v-btn>
     </v-card>
-
   </div>
 </template>
 
@@ -168,14 +169,6 @@ export default {
       return this.filterCriteria.shops
     },
   },
-  created() {
-    this.currency = this.currenciesList[0]
-    this.sortCriteria.name = this.sortByItems[0]
-    this.loadShops()
-  },
-  beforeMount() {
-    this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
-  },
   watch: {
     getProducts() {
       this.setAbsoluteLimits()
@@ -199,6 +192,14 @@ export default {
     shops() {
       this.changePriceLimits()
     },
+  },
+  created() {
+    this.currency = this.currenciesList[0]
+    this.sortCriteria.name = this.sortByItems[0]
+    this.loadShops()
+  },
+  beforeMount() {
+    this.filterCriteria.range = [this.filterCriteria.minLimit, this.filterCriteria.maxLimit]
   },
   methods: {
     changeOrder() {

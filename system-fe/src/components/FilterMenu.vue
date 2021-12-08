@@ -95,7 +95,7 @@
         v-for="currency in currenciesList"
         :key="currency.name"
         class="pa-2 mb-6"
-        :disabled="currency.active"
+        :disabled="currency.sign === getCurrentCurrency.symbol"
         @click="changeCurrency(currency)"
       >
         <h3>{{ currency.sign }}</h3>
@@ -108,9 +108,6 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import {ASC, DESC} from "../store/modules/constants/constants";
 
-// const ASC = 0;
-// const DESC = 1;
-
 export default {
   name: "FilterMenu",
   data: () => ({
@@ -120,9 +117,9 @@ export default {
       {ord: 'Des', icon: 'south'},
     ],
     currenciesList: [
-      {name: 'MDL', sign: 'L', active: true},
-      {name: 'EUR', sign: '€', active: false},
-      {name: 'USD', sign: '$', active: false},
+      {name: 'MDL', sign: 'L'},
+      {name: 'EUR', sign: '€'},
+      {name: 'USD', sign: '$'},
     ],
     currency: {},
     sortCriteria: {
@@ -207,14 +204,9 @@ export default {
     },
     changeCurrency(currency) {
       if (this.getExchangeRates.length) {
-        this.currenciesList[this.currenciesList.indexOf(this.currency)].active = false
-        this.currenciesList[this.currenciesList.indexOf(currency)].active = true
-        this.currency = currency
         const currencyRate = this.getExchangeRates.find(val => val.currency === currency.name)?.rate ?? 1
         this.mutateCurrency({coefficient: currencyRate, symbol: currency.sign})
       }
-      // console.log(this.filterCriteria.minLimit + " --- " + this.filterCriteria.maxLimit + " :::: " + this.filterCriteria.minPrice + " --- " + this.filterCriteria.maxPrice)
-      // console.log(this.filterCriteria.range[0] + " = " + this.filterCriteria.range[1])
     },
     filterProducts({minPrice, maxPrice, shops}) {
       if (this.getProducts.length) {
@@ -263,9 +255,6 @@ export default {
       this.filterCriteria.minLimit = Number.isFinite(min) ? min : 0
       const max = Math.max(...this.getFilteredProducts.map(item => item.price))
       this.filterCriteria.maxLimit = Number.isFinite(max) ? max : 0
-
-      // console.log("current currency: " + this.getCurrentCurrency.coefficient)
-      // console.log("min: " + min / this.getCurrentCurrency.coefficient + " max: " + max / this.getCurrentCurrency.coefficient)
 
       if ((this.filterCriteria.minPrice < this.filterCriteria.minLimit) || (this.filterCriteria.minLimit < this.filterCriteria.minPrice)) {
         this.filterCriteria.minPrice = this.filterCriteria.minLimit

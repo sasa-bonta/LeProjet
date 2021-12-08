@@ -23,8 +23,8 @@
             :key="language.lang"
             text
             class="d-flex justify-center"
-            :disabled="language.active"
-            @click="changeLanguage(language)"
+            :disabled="language.lang === getLanguage"
+            @click="changeLanguage(language.lang)"
           >
             <country-flag
               :country="language.flag"
@@ -59,11 +59,10 @@ export default {
   name: "Settings",
   components: {CountryFlag},
   data: () => ({
-    currentLanguage: {},
     languages: [
-      {flag: 'md', lang: 'md', active: false},
-      {flag: 'ru', lang: 'ru', active: false},
-      {flag: 'gb', lang: 'en', active: false},
+      {flag: 'md', lang: 'md'},
+      {flag: 'ru', lang: 'ru'},
+      {flag: 'gb', lang: 'en'},
     ],
   }),
   computed: {
@@ -80,19 +79,12 @@ export default {
       immediate: true,
     },
   },
-  created() {
-    this.currentLanguage = this.languages[this.languages.findIndex(item => item.lang === this.getLanguage)]
-    this.languages[this.languages.indexOf(this.currentLanguage)].active = true
-  },
   methods: {
     changeDarkMode() {
       this.$store.commit('settings/setDarkModeEnabled', !this.isDarkModeEnabled)
     },
     changeLanguage(language) {
-      this.languages[this.languages.indexOf(this.currentLanguage)].active = false
-      this.languages[this.languages.indexOf(language)].active = true
-      this.currentLanguage = language
-      this.mutateLanguage(language.lang)
+      this.mutateLanguage(language)
     },
     ...mapMutations({
       mutateLanguage: 'settings/mutateLanguage',

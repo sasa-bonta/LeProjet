@@ -4,12 +4,17 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getHello(): string {
     return (
-      'Hello system-BE! <br> ' +
+      '<h1>Hello system-BE!</h1><br> ' +
+      '<h2>Production paths: </h2><br> ' +
       'http://localhost:5000/categories <br> ' +
       'http://localhost:3000/shops <br> ' +
       'http://localhost:3000/search?search=iphone <br> ' +
       'http://localhost:3000/page?link=/ru/photo-video/obektivy/ <br>' +
-      'http://localhost:3000/currencies?date=01.12.2021'
+      'http://localhost:3000/currencies?date=01.12.2021 <br><hr><br>' +
+      '<h2>Testing stub paths: </h2><br> ' +
+      'http://localhost:3000/shops/test <br> ' +
+      'http://localhost:3000/search/test <br> ' +
+      'http://localhost:3000/currencies/test <br>'
     );
   }
 }

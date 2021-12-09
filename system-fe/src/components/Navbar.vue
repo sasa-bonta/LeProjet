@@ -6,26 +6,24 @@
     elevation="3"
   >
     <v-container class="py-0 fill-height">
-
       <v-btn
         v-for="link in links"
-        :to="{name: link.name}"
         :key="link.name"
+        :to="{name: link.name}"
         text
       >
         {{ link.title }}
       </v-btn>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <Search
         @submitInput="search"
       />
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <Settings />
-
     </v-container>
   </v-app-bar>
 </template>

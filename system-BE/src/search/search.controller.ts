@@ -1,5 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { SearchService } from './search.service';
+import { items } from './itemsStubs';
 
 @Controller('search')
 export class SearchController {
@@ -8,5 +9,10 @@ export class SearchController {
   @Get()
   searchItems(@Query('search') search, @Query('page') page) {
     return this.searchService.searchItemsEverywhere(search, page);
+  }
+
+  @Get('test')
+  searchItemsStubs() {
+    return items;
   }
 }

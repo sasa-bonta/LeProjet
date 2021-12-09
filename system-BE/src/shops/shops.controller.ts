@@ -9,4 +9,9 @@ export class ShopsController {
   getShops() {
     return this.shopsService.getShops();
   }
+
+  @Get('test')
+  getShopsStubs() {
+    return ['enter', 'darwin', 'shopit'];
+  }
 }

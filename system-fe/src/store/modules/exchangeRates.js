@@ -1,4 +1,3 @@
-// import {exchangeRatesStubs} from "../tests/exchangeRatesStubs";
 import {fetchExchangeRates} from "../../api/api";
 
 function getTodayDate() {
@@ -33,7 +32,6 @@ export default {
         async loadExchangeRates(store) {
             store.commit('mutateIsLoading', true)
             const exchangeRates = await fetchExchangeRates(getTodayDate())
-            // const exchangeRates = {data: exchangeRatesStubs}
             store.commit('mutateExchangeRatesList', exchangeRates.data)
             store.commit('mutateIsLoading', false)
         },

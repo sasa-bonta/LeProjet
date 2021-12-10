@@ -1,4 +1,3 @@
-// import {shopsListStubs} from "../tests/shopsStubs";
 import {fetchShops} from "../../api/api";
 
 export const state = {
@@ -19,7 +18,6 @@ export default {
             store.commit('mutateLoading', true)
             store.commit('mutateShopsList', [])
             const shops = await fetchShops()
-            // const shops = {data: shopsListStubs}
             store.commit('mutateShopsList', shops.data)
             store.commit('mutateLoading', false)
         },

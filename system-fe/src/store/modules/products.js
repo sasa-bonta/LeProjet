@@ -1,4 +1,3 @@
-// import {productsStubs} from "../tests/productsStubs";
 import {fetchProducts} from "../../api/api";
 
 export const state = {
@@ -19,7 +18,6 @@ export default {
         async loadProducts(store, {search, page = 1}) {
             store.commit('mutateLoading', true)
             const products = await fetchProducts({search: search, page: page})
-            // const products = {data: productsStubs}
             const mutation = (page > 1) ? 'mutateAppendList' : 'mutateList'
             store.commit(mutation, products.data.map(item => ({
                 name: item.name,

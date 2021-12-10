@@ -2,7 +2,10 @@ module.exports = {
   devServer: {
     proxy: {
       '^/api/products': {
-        target: 'http://localhost:3000/search',
+        // this is dev api, used for testing
+        target: 'http://localhost:3000/search/test',
+        // this is prod api, used for production mod
+        // target: 'http://localhost:3000/search',
         pathRewrite: {
           '^/api/products': '',
         },
@@ -10,7 +13,10 @@ module.exports = {
         changeOrigin: true,
       },
       '^/api/shops': {
-        target: 'http://localhost:3000/shops',
+        // this is dev api, used for testing
+        target: 'http://localhost:3000/shops/test',
+        // this is prod api, used for production mod
+        // target: 'http://localhost:3000/shops',
         pathRewrite: {
           '^/api/shops': '',
         },
@@ -18,7 +24,10 @@ module.exports = {
         changeOrigin: true,
       },
       '^/api/currencies': {
-        target: 'http://localhost:3000/currencies',
+        // this is dev api, used for testing
+        target: 'http://localhost:3000/currencies/test',
+        // this is prod api, used for production mod
+        // target: 'http://localhost:3000/currencies',
         pathRewrite: {
           '^/api/currencies': '',
         },

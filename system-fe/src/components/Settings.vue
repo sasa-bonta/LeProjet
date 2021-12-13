@@ -5,6 +5,7 @@
   >
     <template v-slot:activator="{ on, attrs }">
       <v-icon
+        id="openSettingsButton"
         v-bind="attrs"
         class="crossRotate"
         v-on="on"

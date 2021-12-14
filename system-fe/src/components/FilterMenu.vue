@@ -1,7 +1,10 @@
 <template>
   <div class="pt-3">
     <v-spacer />
-    <h4 class="ml-6">
+    <h4
+      id="numberOfItems"
+      class="ml-6"
+    >
       Found: {{ getFilteredProducts.length }} products
     </h4>
 
@@ -10,6 +13,7 @@
       class="d-flex justify-space-around"
     >
       <v-select
+        id="sortBy"
         v-model="sortCriteria.name"
         :items="sortByItems"
         label="Solo field"
@@ -18,6 +22,7 @@
         solo
       />
       <v-btn
+        id="sortOrder"
         class=" ml-3 mt-6 mr-3"
         :class="$vuetify.theme.dark ? 'grey darken-4' : ''"
         text

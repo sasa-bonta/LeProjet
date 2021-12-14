@@ -1,4 +1,4 @@
-describe('example to-do app', () => {
+describe('navbar', () => {
     const searchText = 'samsung a 50'
 
     beforeEach(() => {

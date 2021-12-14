@@ -1,6 +1,6 @@
 export const state = {
     isDarkModeEnabled: false,
-    language: 'md',
+    language: 'en',
 }
 
 export default {

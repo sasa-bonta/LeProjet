@@ -19,11 +19,11 @@
       <v-card-title
         :class="`${$vuetify.theme.dark ? 'white' : 'black'}--text`"
       >
-        {{ item.name }}
+        {{ item.name }} test
       </v-card-title>
     </a>
 
-    <v-spacer/>
+    <v-spacer />
 
     <v-card-title>
       {{ item.price / getCurrentCurrency.coefficient | formatPrice }} {{ getCurrentCurrency.symbol }}
@@ -34,7 +34,6 @@
     >
       {{ item.provider }}
     </v-card-subtitle>
-
   </v-card>
 </template>
 

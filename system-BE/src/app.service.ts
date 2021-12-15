@@ -10,7 +10,7 @@ export class AppService {
       'http://localhost:3000/shops <br> ' +
       'http://localhost:3000/search?search=iphone <br> ' +
       'http://localhost:3000/page?link=/ru/photo-video/obektivy/ <br>' +
-      'http://localhost:3000/currencies?date=01.12.2021 <br><hr><br>' +
+      'http://localhost:3000/currencies <br><hr><br>' +
       '<h2>Testing stub paths: </h2><br> ' +
       'http://localhost:3000/shops/test <br> ' +
       'http://localhost:3000/search/test <br> ' +

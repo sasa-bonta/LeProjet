@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { CurrenciesService } from './currencies.service';
 
 @Controller('currencies')
@@ -6,8 +6,8 @@ export class CurrenciesController {
   constructor(readonly currenciesService: CurrenciesService) {}
 
   @Get()
-  getCurrencies(@Query('date') date) {
-    return this.currenciesService.searchRates(date);
+  getCurrencies() {
+    return this.currenciesService.searchRates();
   }
 
   @Get('test')

@@ -1,19 +1,5 @@
 import {fetchExchangeRates} from "../../api/api";
 
-function getTodayDate() {
-    const today = new Date();
-    let dd = today.getDate()
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-    let mm = today.getMonth() + 1
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-    let year = today.getFullYear()
-    return `${dd}.${mm}.${year}`
-}
-
 export const state = {
     exchangeRatesList: [],
     currentCurrency: {coefficient: 1, symbol: 'L'},
@@ -31,7 +17,7 @@ export default {
     actions: {
         async loadExchangeRates(store) {
             store.commit('mutateIsLoading', true)
-            const exchangeRates = await fetchExchangeRates(getTodayDate())
+            const exchangeRates = await fetchExchangeRates()
             store.commit('mutateExchangeRatesList', exchangeRates.data)
             store.commit('mutateIsLoading', false)
         },

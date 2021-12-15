@@ -19,7 +19,7 @@
       <v-card-title
         :class="`${$vuetify.theme.dark ? 'white' : 'black'}--text`"
       >
-        {{ item.name }} test
+        {{ item.name }}
       </v-card-title>
     </a>
 

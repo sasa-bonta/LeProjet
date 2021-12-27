@@ -14,7 +14,8 @@ export class AppService {
       '<h2>Testing stub paths: </h2><br> ' +
       'http://localhost:3000/shops/test <br> ' +
       'http://localhost:3000/search/test <br> ' +
-      'http://localhost:3000/currencies/test <br>'
+      'http://localhost:3000/currencies/test <br>' +
+      'http://localhost:3000/categories/test <br>'
     );
   }
 }

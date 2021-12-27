@@ -1,5 +1,11 @@
 ## Quick start
 
+### Start Front-end "system-fe"
+
+```bash
+npm run serve
+```
+
 ### Start APIs "system-BE"
 
 ```bash

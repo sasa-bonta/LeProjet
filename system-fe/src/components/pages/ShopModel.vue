@@ -1,5 +1,10 @@
 <template>
-  <v-col>
+  <v-col
+    sm="6"
+    md="4"
+    lg="3"
+    xl="2"
+  >
     <v-card
       class="mx-auto fill-height card-outer d-flex flex-column"
       max-width="344"
@@ -9,14 +14,14 @@
       <div
         class="rounded-t-lg pt-3 px-3 shopLogo"
       >
-        <slot name="logo"/>
+        <slot name="logo" />
       </div>
 
       <h1
         :class="`${$vuetify.theme.dark ? 'white' : 'black'}--text`"
         class="d-flex justify-center mb-3"
       >
-        <slot name="name"/>
+        <slot name="name" />
       </h1>
     </v-card>
   </v-col>

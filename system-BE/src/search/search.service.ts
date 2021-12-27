@@ -7,7 +7,10 @@ export class SearchService {
   async searchItemsEverywhere(search, page = 1) {
     let result = [];
     for (const provider of providers) {
-      if (+page === 1 || (page > 1 && provider.paginated)) {
+      if (!(+page === 1 || (page > 1 && provider.paginated))) {
+        continue;
+      }
+      try {
         let providerData = (
           await axios.get(`${provider.url}search?search=${search}&page=${page}`)
         ).data;
@@ -16,6 +19,8 @@ export class SearchService {
           provider: provider.name,
         }));
         result = result.concat(providerData);
+      } catch (err) {
+        console.log(err);
       }
     }
     return result;

@@ -4,6 +4,7 @@ module.exports = {
       '^/api/products': {
         // this is dev api, used for testing
         target: 'http://localhost:3000/search/test',
+
         // this is prod api, used for production mod
         // target: 'http://localhost:3000/search',
         pathRewrite: {
@@ -15,6 +16,7 @@ module.exports = {
       '^/api/shops': {
         // this is dev api, used for testing
         target: 'http://localhost:3000/shops/test',
+
         // this is prod api, used for production mod
         // target: 'http://localhost:3000/shops',
         pathRewrite: {
@@ -26,6 +28,7 @@ module.exports = {
       '^/api/currencies': {
         // this is dev api, used for testing
         target: 'http://localhost:3000/currencies/test',
+
         // this is prod api, used for production mod
         // target: 'http://localhost:3000/currencies',
         pathRewrite: {

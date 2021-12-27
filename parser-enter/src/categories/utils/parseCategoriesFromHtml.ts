@@ -18,9 +18,8 @@ const options = {
     leadingZeros: true,
     skipLike: /\+[0-9]{10}/,
   },
-  attrValueProcessor: (val, attrName) =>
-    decode(val, { isAttributeValue: true }), //default is a=>a
-  tagValueProcessor: (val, tagName) => decode(val), //default is a=>a
+  attrValueProcessor: (val) => decode(val, { isAttributeValue: true }), //default is a=>a
+  tagValueProcessor: (val) => decode(val), //default is a=>a
 };
 export default (html) => {
   const jsonObj = parse(html, options);

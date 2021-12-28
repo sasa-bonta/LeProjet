@@ -1,4 +1,5 @@
 // http://localhost:5000/categories
+// https://enter.online/sitemap-categories.xml
 
 export const categoriesListStub = [
   'https://enter.online/ru/audiotehnika/naushniki/',

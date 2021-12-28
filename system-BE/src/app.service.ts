@@ -6,7 +6,7 @@ export class AppService {
     return (
       '<h1>Hello system-BE!</h1><br> ' +
       '<h2>Production paths: </h2><br> ' +
-      'http://localhost:5000/categories <br> ' +
+      'http://localhost:3000/categories <br> ' +
       'http://localhost:5000/page?link=/ru/photo-video/obektivy/ <br>' +
       'http://localhost:3000/shops <br> ' +
       'http://localhost:3000/search?search=iphone <br> ' +

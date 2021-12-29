@@ -1,6 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
-import { categoriesListStub } from './stubs/categoriesStubs';
 
 @Controller('categories')
 export class CategoriesController {
@@ -13,6 +12,6 @@ export class CategoriesController {
 
   @Get('test')
   getCategoriesStubs() {
-    return categoriesListStub;
+    return this.categoriesService.getCategoriesStubs();
   }
 }

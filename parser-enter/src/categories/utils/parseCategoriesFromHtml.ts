@@ -32,9 +32,10 @@ import cheerio from 'cheerio';
 export default (html) => {
   const $ = cheerio.load(html);
   const result = [];
-  $('li.first-level').each(function () {
+  for (let i = 0; i < $('ul.first-level > li.first-level').length; i++) {
     result.push({
       category: $(this).find('a').text().trim(),
+      index: i,
       // price: $(this)
       //   .find('.ty-price span:first-child')
       //   .text()
@@ -43,6 +44,6 @@ export default (html) => {
       // image: $(this).find('.cm-image').attr('data-src'),
       // url: $(this).find('a').attr('href'),
     });
-  });
+  }
   return result;
 };

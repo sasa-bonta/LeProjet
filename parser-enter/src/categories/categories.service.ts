@@ -10,4 +10,9 @@ export class CategoriesService {
     );
     return parseCategoriesFromHtml(data);
   }
+
+  public async getCategories2() {
+    const { data } = await axios.get('https://enter.online/');
+    return parseCategoriesFromHtml(data);
+  }
 }

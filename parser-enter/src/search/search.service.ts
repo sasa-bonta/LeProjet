@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import parseItemsFromHtml from '../page/utils/parseItemsFromHtml';
+import parseItemsFromHtml from './utils/parseItemsFromHtml';
 
 @Injectable()
 export class SearchService {

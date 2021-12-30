@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import parseItemsFromHtml from './utils/parseItemsFromHtml';
+import parseItemsFromHtml from '../search/utils/parseItemsFromHtml';
 
 @Injectable()
 export class PageService {

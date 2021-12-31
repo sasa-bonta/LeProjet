@@ -9,9 +9,4 @@ export class CategoriesController {
   getCategories() {
     return this.categoriesService.getCategories();
   }
-
-  @Get('test')
-  getCategories2() {
-    return this.categoriesService.getCategories2();
-  }
 }

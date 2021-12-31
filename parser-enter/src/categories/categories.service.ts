@@ -5,13 +5,6 @@ import parseCategoriesFromHtml from './utils/parseCategoriesFromHtml';
 @Injectable()
 export class CategoriesService {
   public async getCategories() {
-    const { data } = await axios.get(
-      'https://enter.online/sitemap-categories.xml',
-    );
-    return parseCategoriesFromHtml(data);
-  }
-
-  public async getCategories2() {
     const { data } = await axios.get('https://enter.online/');
     return parseCategoriesFromHtml(data);
   }

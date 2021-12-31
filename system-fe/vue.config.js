@@ -1,45 +1,50 @@
+const TARGETS = require('./src/constants/proxyConfig.js')
+
+/**
+ * To change the applications proxy mode (dev/prod)
+ * change the variable MOD in the file : ./src/constants/proxyConfig.js.
+ * You can use for that constants DEV or PROD.
+ * The file is required above.
+ */
+
 module.exports = {
-  devServer: {
-    proxy: {
-      '^/api/products': {
-        // this is dev api, used for testing
-        target: 'http://localhost:3000/search/test',
-
-        // this is prod api, used for production mod
-        // target: 'http://localhost:3000/search',
-        pathRewrite: {
-          '^/api/products': '',
+    devServer: {
+        proxy: {
+            '^/api/products': {
+                target: TARGETS.apiProducts,
+                pathRewrite: {
+                    '^/api/products': '',
+                },
+                ws: true,
+                changeOrigin: true,
+            },
+            '^/api/shops': {
+                target: TARGETS.apiShops,
+                pathRewrite: {
+                    '^/api/shops': '',
+                },
+                ws: true,
+                changeOrigin: true,
+            },
+            '^/api/currencies': {
+                target: TARGETS.apiCurrencies,
+                pathRewrite: {
+                    '^/api/currencies': '',
+                },
+                ws: true,
+                changeOrigin: true,
+            },
+            '^/api/categories': {
+                target: TARGETS.apiCategories,
+                pathRewrite: {
+                    '^/api/categories': '',
+                },
+                ws: true,
+                changeOrigin: true,
+            },
         },
-        ws: true,
-        changeOrigin: true,
-      },
-      '^/api/shops': {
-        // this is dev api, used for testing
-        target: 'http://localhost:3000/shops/test',
-
-        // this is prod api, used for production mod
-        // target: 'http://localhost:3000/shops',
-        pathRewrite: {
-          '^/api/shops': '',
-        },
-        ws: true,
-        changeOrigin: true,
-      },
-      '^/api/currencies': {
-        // this is dev api, used for testing
-        target: 'http://localhost:3000/currencies/test',
-
-        // this is prod api, used for production mod
-        // target: 'http://localhost:3000/currencies',
-        pathRewrite: {
-          '^/api/currencies': '',
-        },
-        ws: true,
-        changeOrigin: true,
-      },
     },
-  },
-  transpileDependencies: [
-    'vuetify'
-  ]
+    transpileDependencies: [
+        'vuetify'
+    ]
 }

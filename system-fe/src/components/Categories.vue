@@ -12,7 +12,7 @@
       </v-list-item-content>
     </v-list-item>
 
-    <v-divider class="my-2"></v-divider>
+    <v-divider class="my-2" />
 
     <v-list-item
       link

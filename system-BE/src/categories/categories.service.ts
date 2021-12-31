@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { categoriesListStub } from './stubs/categoriesStubs';
+import { categoriesItemsStubs } from './stubs/categoriesItemsStubs';
+import { categoriesItemsUrlsStubs } from './stubs/categoriesItemsUrlsStubs';
 
 @Injectable()
 export class CategoriesService {
@@ -16,5 +18,13 @@ export class CategoriesService {
       }
     });
     return categoriesList;
+  }
+
+  public async getCategoriesItemsStubs() {
+    return categoriesItemsStubs;
+  }
+
+  public async getCategoriesItemsUrlsStubs() {
+    return categoriesItemsUrlsStubs;
   }
 }

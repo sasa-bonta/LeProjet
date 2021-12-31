@@ -17,11 +17,11 @@ export class CategoriesController {
 
   @Get('item')
   getCategoriesItemsStubs() {
-    return this.categoriesService.getCategoriesStubs();
+    return this.categoriesService.getCategoriesItemsStubs();
   }
 
   @Get('url')
   getCategoriesItemsUrlsStubs() {
-    return this.categoriesService.getCategoriesStubs();
+    return this.categoriesService.getCategoriesItemsUrlsStubs();
   }
 }

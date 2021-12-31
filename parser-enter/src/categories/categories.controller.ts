@@ -10,7 +10,7 @@ export class CategoriesController {
     return this.categoriesService.getCategories();
   }
 
-  @Get('2')
+  @Get('test')
   getCategories2() {
     return this.categoriesService.getCategories2();
   }

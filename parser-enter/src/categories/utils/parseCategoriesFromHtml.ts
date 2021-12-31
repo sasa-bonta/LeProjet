@@ -32,18 +32,22 @@ import cheerio from 'cheerio';
 export default (html) => {
   const $ = cheerio.load(html);
   const result = [];
-  for (let i = 0; i < $('ul.first-level > li.first-level').length; i++) {
+  $('ul.first-level > li.first-level').each(function (i, categoryItem) {
+    const subCategories = [];
+
+    $('div.megameu.uk-margin-top-remove')
+      .eq(i)
+      .find('ul.uk-subnav > li.second-level > a')
+      .each(function () {
+        subCategories.push($(this).text().trim().replace(/\n/g, ''));
+      });
+
     result.push({
-      category: $(this).find('a').text().trim(),
+      category: $(categoryItem).find('a').text().trim(),
       index: i,
-      // price: $(this)
-      //   .find('.ty-price span:first-child')
-      //   .text()
-      //   .trim()
-      //   .replace(/\s/g, ''),
-      // image: $(this).find('.cm-image').attr('data-src'),
-      // url: $(this).find('a').attr('href'),
+      subCategories: subCategories,
     });
-  }
+  });
+
   return result;
 };

@@ -10,8 +10,18 @@ export class CategoriesController {
     return this.categoriesService.getCategories();
   }
 
-  @Get('test')
+  @Get('cat')
   getCategoriesStubs() {
+    return this.categoriesService.getCategoriesStubs();
+  }
+
+  @Get('item')
+  getCategoriesItemsStubs() {
+    return this.categoriesService.getCategoriesStubs();
+  }
+
+  @Get('url')
+  getCategoriesItemsUrlsStubs() {
     return this.categoriesService.getCategoriesStubs();
   }
 }

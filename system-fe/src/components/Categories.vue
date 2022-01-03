@@ -26,16 +26,27 @@
           color="transparent"
         >
           <v-list-group
-            v-model="
-              category.active"
+            v-model="category.active"
             :prepend-icon="category.action"
             no-action
           >
             <template
               v-slot:activator
             >
-              <v-list-item-content>
-                <v-list-item-title v-text="category.category" />
+              <v-list-item-content
+                @click.stop
+              >
+                <router-link
+                  :to="{ name: 'categories',
+                         query: {
+                           link: category.url
+                         } }"
+                >
+                  <v-list-item-title
+                    :class="categoryColor"
+                    v-text="category.category"
+                  />
+                </router-link>
               </v-list-item-content>
             </template>
             <div
@@ -52,7 +63,7 @@
                 >
                   <v-list-item-content>
                     <v-list-item-title
-                      :class="`${subcategoryColor} font-weight-bold`"
+                      :class="`${categoryColor} font-weight-bold`"
                       v-text="subCategory.title"
                     />
                   </v-list-item-content>
@@ -71,7 +82,7 @@
                   >
                     <v-list-item-content>
                       <v-list-item-title
-                        :class="subcategoryColor"
+                        :class="categoryColor"
                         v-text="item.item"
                       />
                     </v-list-item-content>
@@ -97,8 +108,8 @@ export default {
       getCategories: 'categories/getCategories',
       getIsLoading: 'categories/getIsLoading',
     }),
-    subcategoryColor() {
-        return this.$vuetify.theme.dark ? 'white--text' : 'black--text'
+    categoryColor() {
+      return this.$vuetify.theme.dark ? 'white--text' : 'black--text'
     },
   },
   mounted() {
@@ -118,7 +129,10 @@ export default {
 <style scoped>
 .v-application .primary--text {
   color: #EC407A !important;
-  caret-color: #EC407A !important;
+}
+
+.v-list-item--active .v-list-item__title {
+  color: #EC407A !important;
   font-weight: bold;
 }
 

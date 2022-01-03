@@ -1,7 +1,7 @@
-import {fetchShops} from "../../api/api";
+import {fetchCategories} from "../../api/api";
 
 export const state = {
-    shopsList: [],
+    categories: [],
     isLoading: false,
 }
 
@@ -9,21 +9,21 @@ export default {
     namespaced: true,
     state,
     getters: {
-        getShopsList: (state) => state.shopsList,
+        getCategories: (state) => state.categories,
         getIsLoading: (state) => state.isLoading,
     },
     actions: {
-        async loadShopsList(store) {
+        async loadCategories(store) {
             store.commit('mutateLoading', true)
-            store.commit('mutateShopsList', [])
-            const shops = await fetchShops()
-            store.commit('mutateShopsList', shops.data)
+            store.commit('mutateCategories', [])
+            const categories = await fetchCategories()
+            store.commit('mutateCategories', categories.data)
             store.commit('mutateLoading', false)
         },
     },
     mutations: {
-        mutateShopsList(state, payload) {
-            state.shopsList = payload
+        mutateCategories(state, payload) {
+            state.categories = payload
         },
         mutateLoading(state, payload) {
             state.isLoading = payload

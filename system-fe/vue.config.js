@@ -3,7 +3,7 @@ const TARGETS = require('./src/constants/proxyConfig.js')
 /**
  * To change the applications proxy mode (dev/prod)
  * change the variable MOD in the file : ./src/constants/proxyConfig.js.
- * You can use for that constants DEV or PROD.
+ * You can use values 'dev' or 'prod'.
  * The file is required above.
  */
 

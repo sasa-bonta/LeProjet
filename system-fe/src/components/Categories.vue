@@ -3,6 +3,7 @@
     color="transparent"
     class="mx-auto"
     max-width="500"
+    rounded="lg"
   >
     <v-toolbar>
       <v-toolbar-title>Categories</v-toolbar-title>

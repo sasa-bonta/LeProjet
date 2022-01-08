@@ -1,4 +1,4 @@
-import {fetchShops} from "../../api/api";
+import {fetchShops} from "@/api/api";
 
 export const state = {
     shopsList: [],

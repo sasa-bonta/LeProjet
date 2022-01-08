@@ -15,6 +15,7 @@ const DEV_TARGETS = {
     apiShops: 'http://localhost:3000/shops/test',
     apiCurrencies: 'http://localhost:3000/currencies/test',
     apiCategories: 'http://localhost:3000/categories/test',
+    apiPage: 'http://localhost:3000/page/test',
 }
 
 const PROD_TARGETS = {
@@ -22,6 +23,7 @@ const PROD_TARGETS = {
     apiShops: 'http://localhost:3000/shops',
     apiCurrencies: 'http://localhost:3000/currencies',
     apiCategories: 'http://localhost:3000/categories',
+    apiPage: 'http://localhost:3000/page',
 }
 
 const TARGETS = (MOD === DEV) ? DEV_TARGETS : PROD_TARGETS

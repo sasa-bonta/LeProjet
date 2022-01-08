@@ -1,7 +1,7 @@
-import {fetchCategories} from "@/api/api";
+import {fetchPage} from "@/api/api";
 
 export const state = {
-    categories: [],
+    page: [],
     isLoading: false,
 }
 
@@ -9,21 +9,21 @@ export default {
     namespaced: true,
     state,
     getters: {
-        getCategories: (state) => state.categories,
+        getPage: (state) => state.page,
         getIsLoading: (state) => state.isLoading,
     },
     actions: {
-        async loadCategories(store) {
+        async loadPage(store, path) {
             store.commit('mutateLoading', true)
-            store.commit('mutateCategories', [])
-            const categories = await fetchCategories()
-            store.commit('mutateCategories', categories.data)
+            store.commit('mutatePage', [])
+            const page = await fetchPage(encodeURIComponent(path))
+            store.commit('mutatePage', page.data)
             store.commit('mutateLoading', false)
         },
     },
     mutations: {
-        mutateCategories(state, payload) {
-            state.categories = payload
+        mutatePage(state, payload) {
+            state.page = payload
         },
         mutateLoading(state, payload) {
             state.isLoading = payload

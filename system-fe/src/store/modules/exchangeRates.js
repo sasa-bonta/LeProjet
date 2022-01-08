@@ -1,4 +1,4 @@
-import {fetchExchangeRates} from "../../api/api";
+import {fetchExchangeRates} from "@/api/api";
 
 export const state = {
     exchangeRatesList: [],

@@ -42,6 +42,14 @@ module.exports = {
                 ws: true,
                 changeOrigin: true,
             },
+            '^/api/page': {
+                target: TARGETS.apiPage,
+                pathRewrite: {
+                    '^/api/page': '',
+                },
+                ws: true,
+                changeOrigin: true,
+            },
         },
     },
     transpileDependencies: [

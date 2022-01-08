@@ -16,7 +16,7 @@ export default {
         async loadPage(store, path) {
             store.commit('mutateLoading', true)
             store.commit('mutatePage', [])
-            const page = await fetchPage(encodeURIComponent(path))
+            const page = await fetchPage(path)
             store.commit('mutatePage', page.data)
             store.commit('mutateLoading', false)
         },

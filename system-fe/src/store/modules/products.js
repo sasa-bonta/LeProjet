@@ -1,4 +1,4 @@
-import {fetchProducts} from "@/api/api";
+import {fetchProducts} from "../../api/api";
 
 export const state = {
     list: [],

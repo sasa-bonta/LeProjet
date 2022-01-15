@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './routes'
-import store from "./store";
+import store from "./store"
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 

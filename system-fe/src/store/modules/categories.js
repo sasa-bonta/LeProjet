@@ -1,4 +1,4 @@
-import {fetchCategories} from "@/api/api";
+import {fetchCategories} from "../../api/api";
 
 export const state = {
     categories: [],

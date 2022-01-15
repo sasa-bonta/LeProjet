@@ -1,4 +1,4 @@
-import {fetchPage} from "@/api/api";
+import {fetchPage} from "../../api/api";
 
 export const state = {
     page: [],

@@ -8,7 +8,14 @@ export class PageController {
 
   @Get()
   getItemsPerPage(@Query('link') link) {
-    return this.pageService.getItemsOnPage(link);
+    return this.pageService.getItemsOnPage(link).then(function (items) {
+      return items.map((el) => ({
+        name: el.name,
+        image:
+          'http://localhost:3000/public/' +
+          el.image.replace('https://', '').replaceAll('/', '^_^'),
+      }));
+    });
   }
 
   @Get('test')

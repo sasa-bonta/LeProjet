@@ -16,6 +16,12 @@ docker-compose up -d
 npm run start:dev
 ```
 
+### Start processing of images "awesomeImages"
+
+```bash
+go run main.go
+```
+
 - **Search product on all parsers:**
 http://localhost:3000/search?search=iphone
 

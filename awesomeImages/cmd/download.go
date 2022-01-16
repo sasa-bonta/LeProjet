@@ -26,6 +26,11 @@ func DownloadImages() {
 
 	var downloadDirectory = strings.Replace(currentDir, "/awesomeImages", "/system-BE/public/", 1)
 
+	w, err := NewCsvWriter(currentDir + "/logs/download-logs.csv")
+	if err != nil {
+		log.Panic(err)
+	}
+
 	emps := len(LinksSlice)
 	ch := make(chan string, emps)
 
@@ -45,9 +50,9 @@ func DownloadImages() {
 				if err != nil {
 					log.Fatal(err)
 				}
-
 				message = "+++ Downloaded: " + fileName
 			}
+			w.Write([]string{message, "\n    └── " + link})
 			ch <- fmt.Sprintf("%d : %s", syscall.Gettid(), message)
 		}(el)
 	}
@@ -57,6 +62,7 @@ func DownloadImages() {
 		fmt.Println(p)
 		emps--
 	}
+	w.Flush()
 }
 
 func downloadFile(URL, fileName string) error {

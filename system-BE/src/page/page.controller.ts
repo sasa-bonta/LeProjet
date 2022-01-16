@@ -1,6 +1,8 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { PageService } from './page.service';
 import { pageListStub } from './stubs/pageStubs';
+import axios from 'axios';
+import { goServer } from '../constants/imageProcessorUrl';
 
 @Controller('page')
 export class PageController {
@@ -9,12 +11,20 @@ export class PageController {
   @Get()
   getItemsPerPage(@Query('link') link) {
     return this.pageService.getItemsOnPage(link).then(function (items) {
-      return items.map((el) => ({
-        name: el.name,
-        image:
-          'http://localhost:3000/public/' +
-          el.image.replace('https://', '').replaceAll('/', '^_^'),
-      }));
+      return axios
+        .post(
+          goServer,
+          items.map((el) => el.image),
+        )
+        .then(function (r) {
+          console.log(r.data);
+          return items.map((el) => ({
+            name: el.name,
+            image:
+              'http://localhost:3000/public/' +
+              el.image.replace('https://', '').replaceAll('/', '^_^'),
+          }));
+        });
     });
   }
 

@@ -2,18 +2,19 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { SearchService } from './search.service';
 import { items } from './stubs/itemsStubs';
 import axios from 'axios';
+import { goServer } from '../constants/imageProcessorUrl';
 
 @Controller('search')
 export class SearchController {
   constructor(readonly searchService: SearchService) {}
   @Get()
   searchItems(@Query('search') search, @Query('page') page) {
-    const searchItems = this.searchService
+    return this.searchService
       .searchItemsEverywhere(search, page)
       .then(function (items) {
         return axios
           .post(
-            'http://localhost:4000/images',
+            goServer,
             items.map((el) => el.image),
           )
           .then(function (r) {
@@ -29,7 +30,6 @@ export class SearchController {
             }));
           });
       });
-    return searchItems;
   }
 
   @Get('test')

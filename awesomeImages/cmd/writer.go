@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"os"
 	"sync"
+	"syscall"
 )
 
 type CsvWriter struct {
@@ -12,7 +13,7 @@ type CsvWriter struct {
 }
 
 func NewCsvWriter(fileName string) (*CsvWriter, error) {
-	csvFile, err := os.Create(fileName)
+	csvFile, err := os.OpenFile(fileName, syscall.O_APPEND|syscall.O_WRONLY|syscall.O_CREAT, 0666)
 	if err != nil {
 		return nil, err
 	}

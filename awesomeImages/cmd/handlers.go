@@ -34,5 +34,5 @@ func ReadLinks(w http.ResponseWriter, r *http.Request) {
 	// Send a 201 created response
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode("List of links gotten")
+	json.NewEncoder(w).Encode("images processed")
 }

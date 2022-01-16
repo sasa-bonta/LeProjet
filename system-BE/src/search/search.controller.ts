@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { SearchService } from './search.service';
-import { items } from './itemsStubs';
+import { items } from './stubs/itemsStubs';
 import axios from 'axios';
 
 @Controller('search')

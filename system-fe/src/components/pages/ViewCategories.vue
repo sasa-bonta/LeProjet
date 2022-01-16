@@ -1,7 +1,4 @@
 <template>
-  <!--  <div>-->
-  <!--    <pre>{{ getPage }}</pre>-->
-  <!--  </div>-->
   <v-row
     v-if="!getIsLoading"
   >

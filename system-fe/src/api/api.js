@@ -8,4 +8,4 @@ export const fetchProducts = ({search, page}) => api.get('products', {params: {s
 export const fetchExchangeRates = () => api.get('currencies')
 export const fetchShops = () => api.get('shops')
 export const fetchCategories = () => api.get('categories')
-export const fetchPage = (page) => api.get('page', {params: {page}})
+export const fetchPage = (page) => api.get('page', {params: {link: page}})

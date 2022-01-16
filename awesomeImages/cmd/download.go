@@ -11,7 +11,7 @@ import (
 	"syscall"
 )
 
-func DownloadImages() {
+func DownloadImages(currentDir string) {
 
 	//fanOut() {
 	//Imagine you are the manager again but this time you hire a team of employees.
@@ -19,14 +19,10 @@ func DownloadImages() {
 	//As each individual employee finishes their task,
 	//they need to provide you with a paper report that must be placed in your BOX on your desk.
 
-	currentDir, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	var downloadDirectory = strings.Replace(currentDir, "/awesomeImages", "/system-BE/public/", 1)
 
-	w, err := NewCsvWriter(currentDir + "/logs/download-logs.csv")
+	w, err := NewCsvWriter(currentDir+"/logs/download-logs.csv", syscall.O_APPEND|syscall.O_WRONLY|syscall.O_CREAT)
+	w2, err := NewCsvWriter(currentDir+"/logs/current-operation-logs.csv", syscall.O_RDWR|syscall.O_CREAT|syscall.O_TRUNC)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -53,6 +49,7 @@ func DownloadImages() {
 				message = "+++ Downloaded: " + fileName
 			}
 			w.Write([]string{message, "\n    └── " + link})
+			w2.Write([]string{message, "\n    └── " + link})
 			ch <- fmt.Sprintf("%d : %s", syscall.Gettid(), message)
 		}(el)
 	}
@@ -63,6 +60,7 @@ func DownloadImages() {
 		emps--
 	}
 	w.Flush()
+	w2.Flush()
 }
 
 func downloadFile(URL, fileName string) error {

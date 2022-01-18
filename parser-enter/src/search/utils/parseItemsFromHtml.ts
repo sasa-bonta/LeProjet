@@ -7,7 +7,13 @@ export default (html) => {
   $('.ty-grid-list__item').each(function () {
     result.push({
       name: $(this).find('.product-title').text().trim(),
+      price: $(this)
+        .find('.ty-price span:first-child')
+        .text()
+        .trim()
+        .replace(/\s/g, ''),
       image: $(this).find('.cm-image').attr('data-src'),
+      url: $(this).find('a').attr('href'),
     });
   });
 

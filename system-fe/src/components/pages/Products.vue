@@ -71,27 +71,31 @@ export default {
   },
   watch: {
     $route() {
-      this.mutateProductsList([])
-      this.loadProducts({search: this.search, page: this.page})
-      this.loadExchangeRates()
+      this.loadNewProducts()
+
     },
     link: {
       handler() {
-        this.mutateProductsList([])
-        this.loadProducts({search: this.search, page: this.page})
-        this.loadExchangeRates()
+        this.loadNewProducts()
       },
       immediate: true,
     },
   },
   methods: {
     ...mapActions({
-      loadProducts: 'products/loadProducts',
+      loadProductsAction: 'products/loadProducts',
       loadExchangeRates: 'exchangeRates/loadExchangeRates',
     }),
     ...mapMutations({
       mutateProductsList: 'products/mutateList'
     }),
+    loadNewProducts() {
+      if (this.search) {
+        this.mutateProductsList([])
+        this.loadProductsAction({search: this.search, page: this.page})
+        this.loadExchangeRates()
+      }
+    },
   },
 }
 </script>

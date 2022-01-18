@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { SearchService } from './search.service';
-import { items } from './stubs/itemsStubs';
+import { itemsStubs } from './stubs/itemsStubs';
 import axios from 'axios';
 import { goServer } from '../constants/imageProcessorUrl';
 
@@ -34,6 +34,6 @@ export class SearchController {
 
   @Get('test')
   searchItemsStubs() {
-    return items;
+    return itemsStubs;
   }
 }

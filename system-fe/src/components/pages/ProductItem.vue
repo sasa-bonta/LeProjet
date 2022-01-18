@@ -10,11 +10,16 @@
       target="_blank"
       style="text-decoration: none;"
     >
-      <v-img
+      <div
         class="rounded-t-lg"
-        :src="item.image"
-        height="200px"
-      />
+        style="background-color: white; height: 250px; display: flex;"
+      >
+        <img
+          style="max-width: 100%; max-height: 100%; margin: auto; display: block"
+          :src="item.image"
+          :alt="item.image"
+        >
+      </div>
 
       <v-card-title
         :class="`${$vuetify.theme.dark ? 'white' : 'black'}--text`"

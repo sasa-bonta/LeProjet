@@ -24,7 +24,7 @@ export default {
                 image: item.image,
                 url: item.url,
                 provider: item.provider,
-                price: item.price.replace(/\s/g, '')
+                price: item.price?.replace(/\s/g, '') ?? 69,
             })))
             store.commit('mutateLoading', false)
         },

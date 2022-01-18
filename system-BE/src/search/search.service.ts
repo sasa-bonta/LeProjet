@@ -21,7 +21,7 @@ export class SearchService {
         result = result.concat(providerData);
       } catch (err) {
         console.log(err);
-        console.log(`Parser ${provider} doesn't work`);
+        console.log(`Parser ${provider.name} doesn't work`);
       }
     }
     return result;

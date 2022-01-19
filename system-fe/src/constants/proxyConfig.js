@@ -5,7 +5,7 @@ const DEV = 'dev'
  * Change this variable to change the targets of proxy
  * #####################################################################
  */
-const MOD = 'prod'
+const MOD = 'dev'
 /**
  *  #####################################################################
  */

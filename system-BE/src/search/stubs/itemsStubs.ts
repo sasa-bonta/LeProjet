@@ -264,7 +264,7 @@ export const itemsStubs = [
       'http://localhost:3000/public/darwin.md^_^images^_^product^_^thumbs^_^2020^_^11^_^apple_iphone_11_red1a-201124042241-darwin.png',
   },
   {
-    name: 'Apple iPhone 11 128ГБ, Красный',
+    name: 'Apple iPhone 11 128ГБ, Красный test test',
     provider: 'darwin',
     url: 'http://anekdotov.net/',
     image:

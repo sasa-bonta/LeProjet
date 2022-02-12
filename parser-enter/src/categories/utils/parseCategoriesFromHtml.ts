@@ -18,20 +18,20 @@ export default (html) => {
           .each(function () {
             items.push({
               item: $(this).text().trim(),
-              url: $(this).attr('href').replace('https://enter.online', ''),
+              url: $(this).attr('href').substr(20),
             });
           });
 
         subCategories.push({
           title: $(subCategoryItem).find('li.second-level > a').text().trim(),
-          url: $(subCategoryItem).find('li.second-level > a').attr('href')?.replace('https://enter.online', ''),
+          url: $(subCategoryItem).find('li.second-level > a').attr('href')?.substr(20),
           items: items,
         });
       });
 
     result.push({
       category: $(categoryItem).find('a').text().trim(),
-      url: $(categoryItem).find('a').attr('href').replace('https://enter.online', ''),
+      url: $(categoryItem).find('a').attr('href').substr(20),
       sub_categories: subCategories,
     });
   });

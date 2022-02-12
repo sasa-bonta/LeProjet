@@ -7,7 +7,7 @@ export default (html) => {
   $('ul.first-level > li.first-level').each(function (i, categoryItem) {
     const subCategories = [];
 
-    $('div.megameu.uk-margin-top-remove')
+    $('div.tm-megamenu-level2')
       .eq(i)
       .find('ul.uk-subnav')
       .each(function (i2, subCategoryItem) {

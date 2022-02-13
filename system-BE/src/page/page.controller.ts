@@ -9,8 +9,8 @@ export class PageController {
   constructor(protected pageService: PageService) {}
 
   @Get()
-  getItemsPerPage(@Query('link') link) {
-    return this.pageService.getItemsOnPage(link).then(function (items) {
+  getItemsPerPage(@Query('link') link, @Query('page') page) {
+    return this.pageService.getItemsOnPage(link, page).then(function (items) {
       return axios
         .post(
           goServer,

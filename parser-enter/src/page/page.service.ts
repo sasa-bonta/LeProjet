@@ -5,12 +5,12 @@ import filterProductNames from '../categories/utils/filterProductNames';
 
 @Injectable()
 export class PageService {
-  async getItemsOnPage(link: string) {
+  async getItemsOnPage(link: string, page = 1 ) {
     const { data } = await axios.get(
-      `https://enter.online/${link}?sort_by=timestamp&sort_order=desc&result_ids=pagination_contents&is_ajax=1&items_per_page=500`,
+      `https://enter.online${link}?page=${page}`,
     );
     return filterProductNames(
-      parseItemsFromHtml(data.html.pagination_contents),
+      parseItemsFromHtml(data),
     );
   }
 }

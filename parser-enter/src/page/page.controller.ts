@@ -6,7 +6,7 @@ export class PageController {
   constructor(protected pageService: PageService) {}
 
   @Get()
-  getItemsPerPage(@Query('link') link) {
-    return this.pageService.getItemsOnPage(link);
+  getItemsPerPage(@Query('link') link, @Query('page') page) {
+    return this.pageService.getItemsOnPage(link, page);
   }
 }

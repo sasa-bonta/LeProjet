@@ -8,14 +8,13 @@
     <a
       :href="item.url"
       target="_blank"
-      style="text-decoration: none;"
+      class="product-link"
     >
       <div
-        class="rounded-t-lg"
-        style="background-color: white; height: 250px; display: flex;"
+        class="rounded-t-lg img-background"
       >
         <img
-          style="max-width: 100%; max-height: 100%; margin: auto; display: block"
+          class="prod-image"
           :src="item.image"
           :alt="item.image"
         >
@@ -66,5 +65,20 @@ export default {
 </script>
 
 <style scoped>
+  .product-link {
+    text-decoration: none;
+  }
 
+  .img-background {
+    background-color: white;
+    height: 250px;
+    display: flex;
+  }
+
+  .prod-image {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block
+  }
 </style>

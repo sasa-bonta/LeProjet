@@ -22,7 +22,7 @@ export class PageController {
             name: el.name,
             image:
               'http://localhost:3000/public/' +
-              el.image.replace('https://', '').replace('/\//g', '^_^'),
+              el.image.replace('https://', '').split('/',).join('^_^'),
           }));
         });
     });

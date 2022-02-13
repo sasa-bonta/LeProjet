@@ -4,11 +4,11 @@ import parseItemsFromHtml from './utils/parseItemsFromHtml';
 
 @Injectable()
 export class SearchService {
-  async searchItems(search) {
+  async searchItems(search, page = 1) {
+    console.log(search)
     const result = await axios.get(
-      `https://enter.online/ru/poisk/?q=${search}`,
+      `https://enter.online/ru/poisk/?q=${search}&page=${page}`,
     );
-    // console.log(result.data);
     return parseItemsFromHtml(result.data);
   }
 }

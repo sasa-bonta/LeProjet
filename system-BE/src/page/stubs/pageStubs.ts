@@ -5,21 +5,21 @@ export const pageListStub = [
   {
     name: 'Apple iPhone 13 Pro',
     image:
-      'http://localhost:3000/public/stubs/enter.online^_^images^_^thumbnails^_^200^_^200^_^detailed^_^172^_^apple_iphone_13_pro_blue_1_1631697772321.png',
+      'http://localhost:3000/public/stubs/enter.online^_^images^_^product^_^thumbs^_^2022^_^34^_^enter-apple-iphone-13-pro.png',
   },
   {
     name: 'Apple iPhone 13 Pro Max',
     image:
-      'http://localhost:3000/public/stubs/enter.online^_^images^_^thumbnails^_^200^_^200^_^detailed^_^172^_^apple_iphone_13_pro_max_silver_1_1631696971569.png',
+      'http://localhost:3000/public/stubs/enter.online^_^images^_^product^_^thumbs^_^2022^_^02^_^enter-apple-iphone-13-pro-max-078.png',
   },
   {
     name: 'Apple iPhone 13 mini',
     image:
-      'http://localhost:3000/public/stubs/enter.online^_^images^_^thumbnails^_^200^_^200^_^detailed^_^172^_^apple_iphone_13_mini_midnight_1_1631692434079.png',
+      'http://localhost:3000/public/stubs/enter.online^_^images^_^product^_^thumbs^_^2022^_^90^_^enter-apple-iphone-13-mini.png',
   },
   {
     name: 'Apple iPhone 13',
     image:
-      'http://localhost:3000/public/stubs/enter.online^_^images^_^thumbnails^_^200^_^200^_^detailed^_^172^_^apple_iphone_13_midnight_1_1631689595890.png',
+      'http://localhost:3000/public/stubs/enter.online^_^images^_^product^_^thumbs^_^2022^_^58^_^enter-apple-iphone-13.png',
   },
 ];

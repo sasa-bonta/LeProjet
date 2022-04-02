@@ -1,4 +1,6 @@
 import {fetchPage} from "../../api/api";
+import {EventBus} from "../../eventBus";
+import {ERROR_AXIOS_FETCH} from "../../constants/constants";
 
 export const state = {
     page: [],
@@ -17,6 +19,7 @@ export default {
             store.commit('mutateLoading', true)
             store.commit('mutatePage', [])
             const page = await fetchPage(path)
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
             store.commit('mutatePage', page.data)
             store.commit('mutateLoading', false)
         },

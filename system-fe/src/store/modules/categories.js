@@ -1,4 +1,6 @@
 import {fetchCategories} from "../../api/api";
+import {EventBus} from "../../eventBus";
+import {ERROR_AXIOS_FETCH} from "../../constants/constants";
 
 export const state = {
     categories: [],
@@ -14,11 +16,14 @@ export default {
     },
     actions: {
         async loadCategories(store, lang = 'md') {
-            store.commit('mutateLoading', true)
-            store.commit('mutateCategories', [])
-            const categories = await fetchCategories(lang)
-            store.commit('mutateCategories', categories.data)
-            store.commit('mutateLoading', false)
+            if (!state.isLoading) {
+                store.commit('mutateLoading', true)
+                store.commit('mutateCategories', [])
+                const categories = await fetchCategories(lang)
+                    .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
+                store.commit('mutateCategories', categories.data)
+                store.commit('mutateLoading', false)
+            }
         },
     },
     mutations: {

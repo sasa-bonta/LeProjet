@@ -1,16 +1,16 @@
 <template>
   <div class="text-center ma-2">
     <v-snackbar
-      v-model="snackbar"
+        v-model="snackbar"
     >
       {{ text }}
 
       <template v-slot:action="{ attrs }">
         <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
+            color="pink"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
         >
           Close
         </v-btn>
@@ -32,10 +32,14 @@ export default {
     timeoutId: null,
   }),
   mounted() {
-    EventBus.$on(ERROR_AXIOS_FETCH, (message) => {
+    EventBus.$on(ERROR_AXIOS_FETCH, (message, status) => {
+      console.log(message)
       clearTimeout(this.timeoutId)
       this.snackbar = true
-      this.text = message
+      this.text = status + " : " + message.substring(
+          message.lastIndexOf("<pre>") + 5,
+          message.lastIndexOf("</pre>")
+      );
       this.timeoutId = setTimeout(() => {
         this.snackbar = false
       }, 5000)

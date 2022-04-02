@@ -1,4 +1,6 @@
 import {fetchShops} from "../../api/api";
+import {EventBus} from "../../eventBus";
+import {ERROR_AXIOS_FETCH} from "../../constants/constants";
 
 export const state = {
     shopsList: [],
@@ -17,6 +19,7 @@ export default {
             store.commit('mutateLoading', true)
             store.commit('mutateShopsList', [])
             const shops = await fetchShops()
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
             store.commit('mutateShopsList', shops.data)
             store.commit('mutateLoading', false)
         },

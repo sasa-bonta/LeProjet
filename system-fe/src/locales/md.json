@@ -15,5 +15,14 @@
     "name": "Denumire",
     "asc": "ASC",
     "desc": "DESC"
+  },
+  "settings": {
+    "theme": "Temă întunecată"
+  },
+  "homePage": {
+    "welcome": "Bine ați venit pe pagina:",
+    "name":"\"Asistentului Personal pentru analiza și monitorizarea ofertei în comerțul electronic din Republica Moldova\"",
+    "info": "Aici puteți găsi produse, compara prețurile la diferite magazine și monitoriza modificarea prețurilor produselor. Pentru a începe introduceți numele produsului în câmpul de căutare de sus sau folosiți categoriile din stânga.",
+    "ps": "Această pagina nu poartă raspundere pentru veridicitatea prețurilor si nu oferă posibilitatea de cumparare. Este posibilă doar compararea si monitorizarea prețurilor indicate pe paginile magazinele online."
   }
 }

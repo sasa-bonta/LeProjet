@@ -45,7 +45,7 @@
         <v-switch
           :input-value="isDarkModeEnabled"
           inset
-          :label="`Dark mode : ${isDarkModeEnabled.toString()}`"
+          :label="$t('settings.theme')"
           @change="changeDarkMode"
         />
       </v-list-item>

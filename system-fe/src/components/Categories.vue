@@ -116,7 +116,6 @@ export default {
   mounted() {
     if (!this.getCategories.length && !this.getIsLoading) {
       this.loadCategories(this.getLanguage)
-      // .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data.message))
     }
   },
   methods: {

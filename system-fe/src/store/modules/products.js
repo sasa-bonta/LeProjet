@@ -1,4 +1,6 @@
 import {fetchProducts} from "../../api/api";
+import {EventBus} from "../../eventBus";
+import {ERROR_AXIOS_FETCH} from "../../constants/constants";
 
 export const state = {
     list: [],
@@ -18,6 +20,7 @@ export default {
         async loadProducts(store, {search, page = 1}) {
             store.commit('mutateLoading', true)
             const products = await fetchProducts({search: search, page: page})
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
             const mutation = (page > 1) ? 'mutateAppendList' : 'mutateList'
             store.commit(mutation, products.data.map(item => ({
                 name: item.name,

@@ -4,7 +4,7 @@
     rounded="lg"
     :class="`${$vuetify.theme.dark ? 'grey darken-2' : ''} px-3 mb-3`"
   >
-    <RouterView/>
+    <RouterView />
     <ErrorSnackbar />
   </v-sheet>
 </template>

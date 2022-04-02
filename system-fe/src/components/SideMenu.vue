@@ -4,7 +4,8 @@
     :class="$vuetify.theme.dark ? 'grey darken-2' : ''"
   >
     <FilterMenu
-      v-if="isProductsPage"/>
+      v-if="isProductsPage"
+    />
     <Categories
       v-if="!isProductsPage"
     />

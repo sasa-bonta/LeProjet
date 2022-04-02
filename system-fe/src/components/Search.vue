@@ -8,7 +8,7 @@
       rounded
       solo-inverted
       @keyup.enter="$emit('submitInput', $event.target.value)"
-    ></v-text-field>
+    />
   </v-responsive>
 </template>
 

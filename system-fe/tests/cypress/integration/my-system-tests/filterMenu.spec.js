@@ -6,7 +6,7 @@ describe('filter menu', () => {
     })
 
     context('default set values of sorting', () => {
-        it('sort by field default Price ', () => {
+        it('sort by field default Price', () => {
             cy.get('.v-select__selection')
                 .should('have.text', 'Price')
         })
@@ -87,7 +87,7 @@ describe('filter menu', () => {
             .should('include.text', 'Умные часы Apple Watch Series 51.78"/ MWVE2/ Sport Band Золотой')
     })
 
-    it('unchecking + checking shops shops', () => {
+    it('unchecking + checking shops checkboxes', () => {
         cy.get('.mx-3 > .v-input__control > .v-input__slot')
             .click()
         // unchecking enter
@@ -179,7 +179,7 @@ describe('filter menu', () => {
         })
     })
 
-    context('currencies', () => {
+    context('changes currencies', () => {
         it('current currency is L and the [L] button is disabled', () => {
             cy.get('.pt-3 > .d-flex.v-card > :nth-child(1)')
                 .should('have.attr', 'disabled', 'disabled')

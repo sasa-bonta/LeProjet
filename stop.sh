@@ -6,4 +6,5 @@ kill -9 `sudo lsof -t -i:4000`
 
 cd system-BE/
 docker-compose down
-cd ..
+
+exit 0

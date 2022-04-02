@@ -23,10 +23,10 @@
             v-for="language in languages"
             :key="language.lang"
             text
+            :title="language.lang"
             class="d-flex justify-center"
             :disabled="language.lang === getLanguage"
             @click="changeLanguage(language.lang)"
-            :title="language.lang"
           >
             <country-flag
               :country="language.flag"
@@ -88,6 +88,7 @@ export default {
     changeLanguage(language) {
       this.mutateLanguage(language)
       this.$router.go()
+      this.$store.dispatch("categories/loadCategories", this.getLanguage)
     },
     ...mapMutations({
       mutateLanguage: 'settings/mutateLanguage',

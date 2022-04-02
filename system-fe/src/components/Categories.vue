@@ -6,7 +6,7 @@
     rounded="lg"
   >
     <v-toolbar>
-      <v-toolbar-title>Categories</v-toolbar-title>
+      <v-toolbar-title>{{$t("nav.categories")}}</v-toolbar-title>
       <v-spacer />
     </v-toolbar>
 

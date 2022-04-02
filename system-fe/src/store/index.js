@@ -5,7 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 const dataState = createPersistedState({
-    paths: ['settings.isDarkModeEnabled', 'settings.language', 'categories.categories']
+    paths: ['settings.isDarkModeEnabled', 'settings.language', 'categories.categories', 'favorites.list']
 })
 
 const store = new Vuex.Store({

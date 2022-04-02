@@ -21,7 +21,10 @@ export default {
                     image: payload.image,
                     url: payload.url,
                     provider: payload.provider,
-                    price: [payload.price],
+                    prices: [{
+                        price: payload.price,
+                        date: new Date().toISOString().split('T')[0]
+                    }],
                 })
                 added = true
             }

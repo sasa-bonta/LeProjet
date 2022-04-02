@@ -5,9 +5,10 @@ import router from './routes'
 import store from "./store"
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import i18n from './i18n'
-
+import VueClipboard from 'vue-clipboard2'
 
 Vue.config.productionTip = false
+Vue.use(VueClipboard)
 
 new Vue({
   vuetify,

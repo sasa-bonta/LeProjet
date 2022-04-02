@@ -1,24 +1,24 @@
 <template>
-  <v-container>
+  <v-row class="px-9 py-9">
     <v-row justify="center">
       <h1>{{ $t("homePage.welcome") }}</h1>
     </v-row>
     <v-row justify="center">
-      <h2>{{ $t("homePage.name") }}</h2>
+      <h2 class="text-center">{{ $t("homePage.name") }}</h2>
     </v-row>
-    <v-row class="my-5">
+    <v-row class="mb-9">
       <v-divider/>
     </v-row>
     <v-row justify="center">
       <h3>{{ $t("homePage.info") }}</h3>
     </v-row>
-    <v-row class="my-5">
+    <v-row class="mt-9 mb-4">
       <v-divider/>
     </v-row>
-    <v-row class="mb-5">
-      <i><span>{{$t("homePage.ps")}}</span></i>
+    <v-row>
+      <i><span>{{ $t("homePage.ps") }}</span></i>
     </v-row>
-  </v-container>
+  </v-row>
 </template>
 
 <script>
@@ -28,5 +28,7 @@ export default {
 </script>
 
 <style scoped>
-
+.text-center {
+  text-align: center;
+}
 </style>

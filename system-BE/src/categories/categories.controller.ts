@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import {Controller, Get, Query} from '@nestjs/common';
 import { CategoriesService } from './categories.service';
-import { categoriesItemsUrlsStubs } from './stubs/categoriesItemsUrlsStubs';
+import { categoriesRo } from './stubs/categoriesRo';
+import {categoriesRu} from "./stubs/categoriesRu";
 
 @Controller('categories')
 export class CategoriesController {
@@ -14,8 +15,12 @@ export class CategoriesController {
   }
 
   @Get('test')
-  async getCategoriesItemsUrlsStubs() {
+  async getCategoriesItemsUrlsStubs(@Query('lang') lang = '') {
     await this.delay(500);
-    return categoriesItemsUrlsStubs;
+    if (lang === 'ru') {
+      return categoriesRu;
+    } else {
+      return categoriesRo;
+    }
   }
 }

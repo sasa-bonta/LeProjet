@@ -4,9 +4,11 @@
         v-model="snackbar"
     >
       {{ text }}
+      <v-icon>{{ icon }}</v-icon>
+      <v-icon>fa-hexagon-check</v-icon>
       <template v-slot:action="{ attrs }">
         <v-btn
-            color="pink"
+            :color="color"
             text
             v-bind="attrs"
             @click="snackbar = false"
@@ -19,25 +21,32 @@
 </template>
 
 <script>
-
 import {EventBus} from "../eventBus";
-import {ERROR_AXIOS_FETCH} from "../constants/constants";
+import {ADDING_TO_FAVORITES} from "../constants/constants";
 
 export default {
-  name: "ErrorSnackbar",
+  name: "AddToFavoritesSnackbar",
   data: () => ({
     snackbar: false,
     text: '',
+    color: '',
+    icon: '',
     timeoutId: null,
   }),
   mounted() {
-    EventBus.$on(ERROR_AXIOS_FETCH, (message, status) => {
+    EventBus.$on(ADDING_TO_FAVORITES, (success) => {
+      console.log(success)
       clearTimeout(this.timeoutId)
       this.snackbar = true
-      this.text = status + " : " + message.substring(
-          message.lastIndexOf("<pre>") + 5,
-          message.lastIndexOf("</pre>")
-      );
+      if (success) {
+        this.text = "Added to favorites"
+        this.color = 'green'
+        this.icon = 'done'
+      } else {
+        this.text = "Already in favorites"
+        this.color = 'red'
+        this.icon = 'close'
+      }
       this.timeoutId = setTimeout(() => {
         this.snackbar = false
       }, 5000)

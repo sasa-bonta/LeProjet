@@ -6,16 +6,18 @@
   >
     <RouterView />
     <ErrorSnackbar />
+    <AddToFavoritesSnackbar />
   </v-sheet>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
 import ErrorSnackbar from "./ErrorSnackbar";
+import AddToFavoritesSnackbar from "./AddToFavoritesSnackbar";
 
 export default {
   name: "MainView",
-  components: {ErrorSnackbar},
+  components: {AddToFavoritesSnackbar, ErrorSnackbar},
   computed: {
     ...mapGetters({
       isDarkModeEnabled: 'settings/getDarkModeEnabled'

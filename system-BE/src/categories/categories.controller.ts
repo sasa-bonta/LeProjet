@@ -10,12 +10,12 @@ export class CategoriesController {
   delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
   @Get()
-  getCategories() {
-    return this.categoriesService.getCategories();
+  getCategories(@Query('lang') lang) {
+    return this.categoriesService.getCategories(lang);
   }
 
   @Get('test')
-  async getCategoriesItemsUrlsStubs(@Query('lang') lang = '') {
+  async getCategoriesItemsUrlsStubs(@Query('lang') lang) {
     await this.delay(500);
     if (lang === 'ru') {
       return categoriesRu;

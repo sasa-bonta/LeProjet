@@ -35,21 +35,30 @@
           dense
       >
         <v-timeline-item
-            v-for="price in [...item.prices].reverse()"
-            :key="price.price + price.date"
+            v-for="(price, i) in reversePrices"
+            :key="i"
             :color="colors[getRandomInt(6)]"
             small
         >
-          <div>
-            <div>
-              <strong>
-                {{ price.price }} MDL
-              </strong>
-            </div>
-            <div class="font-weight-normal">
-              {{ price.date }}
-            </div>
-          </div>
+          <v-row>
+            <v-col cols="7">
+              <div>
+                <strong>
+                  {{ price.price }} MDL
+                </strong>
+              </div>
+              <div class="font-weight-normal">
+                {{ price.date }}
+              </div>
+            </v-col>
+            <v-col>
+              <v-icon
+                  :class="`${trending(price.price, i + 1)[1]}--text`"
+              >
+                {{ trending(price.price, i + 1)[0] }}
+              </v-icon>
+            </v-col>
+          </v-row>
         </v-timeline-item>
       </v-timeline>
     </v-card-text>
@@ -77,9 +86,25 @@ export default {
   data: () => ({
     colors: ['deep-purple lighten-1', 'green', 'blue accent-3', 'teal darken-3', 'yellow darken-2', 'pink darken-3']
   }),
+  computed: {
+    reversePrices() {
+      return [...this.item.prices].reverse()
+    },
+  },
   methods: {
     getRandomInt(max) {
       return Math.floor(Math.random() * max);
+    },
+    trending(currentPrice, nextIndex) {
+      if (nextIndex < this.reversePrices.length) {
+        if (currentPrice > this.reversePrices[nextIndex].price) {
+          return ['trending_up', 'pink']
+        }
+        if (currentPrice < this.reversePrices[nextIndex].price) {
+          return ['trending_down', 'blue']
+        }
+      }
+      return ['trending_flat', 'light-green']
     },
   },
 }

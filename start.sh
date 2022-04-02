@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd system-BE/
 docker-compose up -d &
 npm run start:dev &

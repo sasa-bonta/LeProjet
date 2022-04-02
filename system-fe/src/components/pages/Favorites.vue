@@ -1,13 +1,23 @@
 <template>
-  <v-row class="px-3 py-3">
-    <div class="pb-5">
-      <FavoriteItem :item="item"/>
-    </div>
+  <v-row>
+    <v-col
+        v-for="item in favoriteProducts"
+        :key="item.url"
+        lg="3"
+        md="4"
+        sm="6"
+        xl="2"
+    >
+      <FavoriteItem
+          :item="item"
+      />
+    </v-col>
   </v-row>
 </template>
 
 <script>
 import FavoriteItem from "./FavoriteItem";
+import {mapGetters} from "vuex";
 
 export default {
   name: "Favorites",
@@ -19,8 +29,13 @@ export default {
       "url": "https://enter.online/ru/kompyutery/monobloki/apple-imac-24-4-5k-m1-8c-7g-8-gb-256-gb-rozovyy/",
       "provider": "enter",
       "prices": [{"price": "29999", "date": "2022-04-02"}]
-    }
-  })
+    },
+  }),
+  computed: {
+    ...mapGetters({
+      favoriteProducts: 'favorites/getList'
+    }),
+  },
 }
 </script>
 

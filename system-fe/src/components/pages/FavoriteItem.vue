@@ -35,19 +35,19 @@
           dense
       >
         <v-timeline-item
-            v-for="price in item.prices"
+            v-for="price in [...item.prices].reverse()"
             :key="price.price + price.date"
             :color="colors[getRandomInt(6)]"
             small
         >
           <div>
             <div>
-              {{ price.price }}
+              <strong>
+                {{ price.price }} MDL
+              </strong>
             </div>
             <div class="font-weight-normal">
-              <strong>
-                {{ price.date }}
-              </strong>
+              {{ price.date }}
             </div>
           </div>
         </v-timeline-item>

@@ -81,7 +81,7 @@
           <img
             src="../../assets/images/shopitLogo.png"
             alt="darvin.md"
-            width="250"
+            style="width: 100%;"
           >
         </div>
       </template>

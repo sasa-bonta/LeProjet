@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "home": "Pagina principală",
+    "products": "Produse",
+    "favorites": "Produse favorite",
+    "categories": "Categorii",
+    "shops": "Magazine",
+    "contacts": "Contacte"
+  },
+  "filter": {
+    "foundProducts": "Produse găsite",
+    "shops": "Magazine",
+    "sliderText": "Intervalul de prețurilor",
+    "price": "Preț",
+    "name": "Denumire",
+    "asc": "ASC",
+    "desc": "DESC"
+  }
+}

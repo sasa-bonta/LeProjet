@@ -5,7 +5,7 @@
       id="numberOfItems"
       class="ml-6"
     >
-      Found: {{ getFilteredProducts.length }} products
+      {{$t("filter.foundProducts")}}: {{ getFilteredProducts.length }}
     </h4>
 
     <!-- Filter criteria, asc/desc -->
@@ -41,7 +41,7 @@
       v-model="filterCriteria.shops"
       :items="getShops"
       chips
-      label="Shops"
+      :label="$t('filter.shops')"
       multiple
       outlined
       class="mx-3"
@@ -52,7 +52,7 @@
       flat
       color="transparent"
     >
-      <v-subheader>Min and max range slider</v-subheader>
+      <v-subheader>{{$t("filter.sliderText")}}</v-subheader>
 
       <v-row class="d-flex justify-lg-space-between">
         <v-text-field
@@ -101,6 +101,7 @@
         :key="currency.name"
         class="pa-2 mb-6"
         :disabled="currency.sign === getCurrentCurrency.symbol"
+        :title="currency.name"
         @click="changeCurrency(currency)"
       >
         <h3>{{ currency.sign }}</h3>
@@ -116,11 +117,6 @@ import {ASC, DESC} from "../store/modules/constants/constants";
 export default {
   name: "FilterMenu",
   data: () => ({
-    sortByItems: ['Price', 'Name'],
-    order: [
-      {ord: 'Asc', icon: 'north'},
-      {ord: 'Des', icon: 'south'},
-    ],
     currenciesList: [
       {name: 'MDL', sign: 'L'},
       {name: 'EUR', sign: '€'},
@@ -170,6 +166,11 @@ export default {
     shops() {
       return this.filterCriteria.shops
     },
+    sortByItems() {return [this.$t("filter.price"), this.$t("filter.name")]},
+    order() {return [
+      {ord: this.$t("filter.asc"), icon: 'north'},
+      {ord: this.$t("filter.desc"), icon: 'south'},
+    ]},
   },
   watch: {
     getProducts() {

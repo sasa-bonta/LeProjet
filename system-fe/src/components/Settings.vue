@@ -26,6 +26,7 @@
             class="d-flex justify-center"
             :disabled="language.lang === getLanguage"
             @click="changeLanguage(language.lang)"
+            :title="language.lang"
           >
             <country-flag
               :country="language.flag"
@@ -86,6 +87,7 @@ export default {
     },
     changeLanguage(language) {
       this.mutateLanguage(language)
+      this.$router.go()
     },
     ...mapMutations({
       mutateLanguage: 'settings/mutateLanguage',

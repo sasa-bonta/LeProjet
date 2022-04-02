@@ -36,38 +36,38 @@ import Search from "./Search";
 export default {
   name: "Navbar",
   components: {Search, Settings},
-  data: () => ({
-    links: [
-      {
-        title: 'Home',
-        name: 'home'
-      },
-      {
-        title: 'Products',
-        name: 'products'
-      },
-      {
-        title: 'Favorites',
-        name: 'favorites'
-      },
-      {
-        title: 'Categories',
-        name: 'categories'
-      },
-      {
-        title: 'Shops',
-        name: 'shops'
-      },
-      {
-        title: 'Contacts',
-        name: 'contacts'
-      },
-    ],
-  }),
   computed: {
     ...mapGetters({
       isDarkModeEnabled: 'settings/getDarkModeEnabled'
     }),
+    links() {
+      return [
+        {
+          title: this.$t("nav.home"),
+          name: 'home'
+        },
+        {
+          title: this.$t("nav.products"),
+          name: 'products'
+        },
+        {
+          title: this.$t("nav.favorites"),
+          name: 'favorites'
+        },
+        {
+          title: this.$t("nav.categories"),
+          name: 'categories'
+        },
+        {
+          title: this.$t("nav.shops"),
+          name: 'shops'
+        },
+        {
+          title: this.$t("nav.contacts"),
+          name: 'contacts'
+        },
+      ]
+    },
   },
   methods: {
     search(value) {

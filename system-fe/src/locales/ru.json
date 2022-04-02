@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "home": "Главная",
+    "products": "Товары",
+    "favorites": "Избранное",
+    "categories": "Категории",
+    "shops": "Магазины",
+    "contacts": "Контакты"
+  },
+  "filter": {
+    "foundProducts": "Найдено товаров",
+    "shops": "Магазны",
+    "sliderText": "Интервал цен",
+    "price": "Цена",
+    "name": "Название",
+    "asc": "ВОЗР",
+    "desc": "УБЫВ"
+  }
+}

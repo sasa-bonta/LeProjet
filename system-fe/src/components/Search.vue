@@ -32,6 +32,9 @@ export default {
         if (!this.isProductsPage) {
           this.value = ''
         }
+        if (!this.value) {
+          this.value = this.$route.query.search
+        }
       },
     },
   },

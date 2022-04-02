@@ -13,7 +13,7 @@ export default {
         getIsLoading: (state) => state.isLoading,
     },
     actions: {
-        async loadCategories(store, lang = 'ro') {
+        async loadCategories(store, lang = 'md') {
             store.commit('mutateLoading', true)
             store.commit('mutateCategories', [])
             const categories = await fetchCategories(lang)

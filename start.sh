@@ -6,7 +6,7 @@ npm run start:dev &
 cd ..
 
 cd system-fe/
-npm run serve &
+npm run serve --fix &
 cd ..
 
 cd awesomeImages/

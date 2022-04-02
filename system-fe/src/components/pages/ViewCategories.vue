@@ -10,7 +10,7 @@
       lg="3"
       xl="2"
     >
-      <ProductItem
+      <CategoryItem
         :item="item"
       />
     </v-col>
@@ -44,11 +44,11 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-import ProductItem from "@/components/pages/ProductItem";
+import CategoryItem from "./CategoryItem";
 
 export default {
   name: "ViewCategories",
-  components: {ProductItem},
+  components: {CategoryItem},
   props: {
     link: {
       required: false,

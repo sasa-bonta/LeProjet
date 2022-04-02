@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations} from "vuex";
+import {mapGetters, mapMutations, mapActions} from "vuex";
 import CountryFlag from 'vue-country-flag'
 
 export default {
@@ -88,11 +88,14 @@ export default {
     changeLanguage(language) {
       this.mutateLanguage(language)
       this.$router.go()
-      this.$store.dispatch("categories/loadCategories", this.getLanguage)
+      this.loadCategories(this.getLanguage)
     },
     ...mapMutations({
       mutateLanguage: 'settings/mutateLanguage',
     }),
+    ...mapActions({
+      loadCategories: 'categories/loadCategories'
+    })
   },
 }
 </script>

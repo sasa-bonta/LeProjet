@@ -107,6 +107,7 @@ export default {
     ...mapGetters({
       getCategories: 'categories/getCategories',
       getIsLoading: 'categories/getIsLoading',
+      getLanguage: 'settings/getLanguage',
     }),
     categoryColor() {
       return this.$vuetify.theme.dark ? 'white--text' : 'black--text'
@@ -114,7 +115,7 @@ export default {
   },
   mounted() {
     if (!this.getCategories.length && !this.getIsLoading) {
-      this.loadCategories()
+      this.loadCategories(this.getLanguage)
       // .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data.message))
     }
   },

@@ -1,8 +1,8 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { SearchService } from './search.service';
-import { itemsStubs } from './stubs/itemsStubs';
 import axios from 'axios';
-import { goServer } from '../constants/imageProcessorUrl';
+import {goServer} from '../constants/imageProcessorUrl';
+import {itemsStubs2} from "./stubs/itemsStubs2";
 
 @Controller('search')
 export class SearchController {
@@ -39,6 +39,6 @@ export class SearchController {
   @Get('test')
   async searchItemsStubs() {
     await this.delay(2000);
-    return itemsStubs;
+    return itemsStubs2;
   }
 }

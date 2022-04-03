@@ -21,7 +21,7 @@ export default {
             const newPrice = await fetchPrice(item.url, item.provider)
                 .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
             const lastPrice = favoriteItem.prices[favoriteItem.prices.length - 1].price
-            if (newPrice.data !== lastPrice) {
+            if (newPrice.data && newPrice.data !== lastPrice) {
                 store.commit('pushPrice', {
                     index: index,
                     newPrice: newPrice.data,

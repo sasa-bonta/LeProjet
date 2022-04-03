@@ -16,7 +16,7 @@ export class PriceController {
     @Get('test')
     async getPriceStubs() {
         await this.delay(1000);
-        const rand = Math.floor(Math.random() * 10);
+        const rand = Math.floor(Math.random() * 12);
         if (rand < 2) {
             return Math.floor(Math.random() * 150) + 250;
         } else {

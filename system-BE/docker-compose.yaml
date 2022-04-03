@@ -17,3 +17,9 @@ services:
     # 5000-5010
     ports:
       - "5002:3000"
+
+  parser-999:
+    image: sasabonta/parser-999
+    # 5000-5010
+    ports:
+      - "5003:3000"

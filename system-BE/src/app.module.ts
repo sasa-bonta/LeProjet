@@ -5,15 +5,17 @@ import { SearchModule } from './search/search.module';
 import { ShopsModule } from './shops/shops.module';
 import { CurrenciesModule } from './currencies/currencies.module';
 import { CategoriesModule } from './categories/categories.module';
-import { PageModule } from './page/page.module';
+import {PageModule} from './page/page.module';
+import {PriceModule} from './price/price.module';
 
 @Module({
   imports: [
-    SearchModule,
-    ShopsModule,
-    CurrenciesModule,
-    CategoriesModule,
-    PageModule,
+      SearchModule,
+      ShopsModule,
+      CurrenciesModule,
+      CategoriesModule,
+      PageModule,
+      PriceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -101,10 +101,10 @@ export default {
           return ['trending_up', 'pink']
         }
         if (currentPrice < this.reversePrices[nextIndex].price) {
-          return ['trending_down', 'blue']
+          return ['trending_down', 'light-green']
         }
       }
-      return ['trending_flat', 'light-green']
+      return ['trending_flat', 'blue']
     },
   },
 }

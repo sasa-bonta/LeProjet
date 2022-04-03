@@ -27,45 +27,80 @@
       </v-card-title>
     </a>
 
-    <v-spacer/>
-
     <v-card-text>
-      <v-timeline
-          align-top
-          dense
+      <v-progress-linear
+          v-if="item.isPriceLoading"
+          color="pink lighten-1"
+          height="6"
+          indeterminate
+      />
+
+      <v-card-actions
+          v-else
       >
-        <v-timeline-item
-            v-for="(price, i) in reversePrices"
-            :key="i"
-            :color="colors[getRandomInt(6)]"
-            small
+        <v-btn
+            color="orange lighten-2"
+            text
         >
-          <v-row>
-            <v-col cols="7">
-              <div>
-                <strong>
-                  {{ price.price }} MDL
-                </strong>
-              </div>
-              <div class="font-weight-normal">
-                {{ price.date }}
-              </div>
-            </v-col>
-            <v-col>
-              <v-icon
-                  :class="`${trending(price.price, i + 1)[1]}--text`"
-              >
-                {{ trending(price.price, i + 1)[0] }}
-              </v-icon>
-            </v-col>
-          </v-row>
-        </v-timeline-item>
-      </v-timeline>
+          {{ $t("favoritesPage.details") }}
+          <v-icon
+              :class="`${getTrend.color}--text ml-9`"
+          >
+            {{ getTrend.trend }}
+          </v-icon>
+        </v-btn>
+
+        <v-spacer></v-spacer>
+
+        <v-btn
+            icon
+            @click="show = !show"
+        >
+          <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+        </v-btn>
+      </v-card-actions>
+
+      <v-expand-transition>
+        <div v-show="show">
+          <v-divider></v-divider>
+
+          <v-timeline
+              align-top
+              dense
+          >
+            <v-timeline-item
+                v-for="(price, i) in reversePrices"
+                :key="i"
+                :color="colors[getRandomInt(6)]"
+                small
+            >
+              <v-row>
+                <v-col cols="7">
+                  <div>
+                    <strong>
+                      {{ price.price }} MDL
+                    </strong>
+                  </div>
+                  <div class="font-weight-normal">
+                    {{ price.date }}
+                  </div>
+                </v-col>
+                <v-col>
+                  <v-icon
+                      :class="`${trending(price.price, i + 1).color}--text`"
+                  >
+                    {{ trending(price.price, i + 1).trend }}
+                  </v-icon>
+                </v-col>
+              </v-row>
+            </v-timeline-item>
+          </v-timeline>
+        </div>
+      </v-expand-transition>
     </v-card-text>
 
-    <v-card-title>
-      {{ item.price }}
-    </v-card-title>
+    <v-spacer/>
+
     <v-card-subtitle
         class="d-flex"
     >
@@ -75,6 +110,8 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "FavoriteItem",
   props: {
@@ -84,12 +121,30 @@ export default {
     },
   },
   data: () => ({
-    colors: ['deep-purple lighten-1', 'green', 'blue accent-3', 'teal darken-3', 'yellow darken-2', 'pink darken-3']
+    colors: ['deep-purple lighten-1', 'green', 'blue accent-3', 'teal darken-3', 'yellow darken-2', 'pink darken-3'],
+    show: false,
+    trends: [
+      {
+        trend: 'trending_down',
+        color: 'light-green',
+      },
+      {
+        trend: 'trending_flat',
+        color: 'blue',
+      },
+      {
+        trend: 'trending_up',
+        color: 'pink'
+      },
+    ],
   }),
   computed: {
     reversePrices() {
       return [...this.item.prices].reverse()
     },
+    getTrend() {
+      return this.trends[this.item.trend + 1]
+    }
   },
   methods: {
     getRandomInt(max) {
@@ -98,15 +153,21 @@ export default {
     trending(currentPrice, nextIndex) {
       if (nextIndex < this.reversePrices.length) {
         if (currentPrice > this.reversePrices[nextIndex].price) {
-          return ['trending_up', 'pink']
+          return this.trends[2]
         }
         if (currentPrice < this.reversePrices[nextIndex].price) {
-          return ['trending_down', 'light-green']
+          return this.trends[0]
         }
       }
-      return ['trending_flat', 'blue']
+      return this.trends[1]
     },
+    ...mapActions({
+      loadPrices: 'favorites/loadPrices',
+    }),
   },
+  beforeMount() {
+    this.loadPrices(this.item)
+  }
 }
 </script>
 

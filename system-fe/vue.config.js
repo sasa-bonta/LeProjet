@@ -50,6 +50,14 @@ module.exports = {
                 ws: true,
                 changeOrigin: true,
             },
+            '^/api/price': {
+                target: TARGETS.apiPrice,
+                pathRewrite: {
+                    '^/api/price': '',
+                },
+                ws: true,
+                changeOrigin: true,
+            },
         },
     },
 

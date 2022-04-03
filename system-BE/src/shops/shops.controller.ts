@@ -12,6 +12,6 @@ export class ShopsController {
 
   @Get('test')
   getShopsStubs() {
-    return ['enter', 'darwin', 'shopit'];
+    return ['enter', 'darwin', 'shopit', '999'];
   }
 }

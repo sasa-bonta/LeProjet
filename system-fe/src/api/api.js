@@ -7,5 +7,6 @@ const api = axios.create({
 export const fetchProducts = ({search, page}) => api.get('products', {params: {search, page}})
 export const fetchExchangeRates = () => api.get('currencies')
 export const fetchShops = () => api.get('shops')
-export const fetchCategories = (lang) => api.get('categories', {params: {lang: lang}})
-export const fetchPage = (page) => api.get('page', {params: {link: page}})
+export const fetchCategories = (lang) => api.get('categories', {params: {lang}})
+export const fetchPage = (link) => api.get('page', {params: {link}})
+export const fetchPrice = (article, provider) => api.get('price', {params: {article: encodeURI(article), provider}})

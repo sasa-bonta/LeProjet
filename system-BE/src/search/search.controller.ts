@@ -6,16 +6,20 @@ import { goServer } from '../constants/imageProcessorUrl';
 
 @Controller('search')
 export class SearchController {
-  constructor(readonly searchService: SearchService) {}
+  constructor(readonly searchService: SearchService) {
+  }
+
+  delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
   @Get()
   searchItems(@Query('search') search, @Query('page') page) {
     return this.searchService
-      .searchItemsEverywhere(search, page)
-      .then(function (items) {
-        return axios
-          .post(
-            goServer,
-            items.map((el) => el.image),
+        .searchItemsEverywhere(search, page)
+        .then(function (items) {
+          return axios
+              .post(
+                  goServer,
+                  items.map((el) => el.image),
           )
           .then(function (r) {
             console.log(r.data);
@@ -33,7 +37,8 @@ export class SearchController {
   }
 
   @Get('test')
-  searchItemsStubs() {
+  async searchItemsStubs() {
+    await this.delay(2000);
     return itemsStubs;
   }
 }

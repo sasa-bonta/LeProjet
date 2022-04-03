@@ -28,7 +28,6 @@
   <v-row
       v-else
   >
-    <div>
       <v-col
           v-for="i in 12"
           :key="i"
@@ -49,7 +48,6 @@
           />
         </v-sheet>
       </v-col>
-    </div>
   </v-row>
 </template>
 

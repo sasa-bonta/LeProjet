@@ -101,16 +101,79 @@
 
     <v-spacer/>
 
-    <v-card-subtitle
-        class="d-flex"
-    >
-      {{ item.provider }}
-    </v-card-subtitle>
+    <v-row>
+      <v-col cols="8">
+        <v-card-title>
+          {{ item.provider }}
+        </v-card-title>
+      </v-col>
+      <v-col class="d-flex justify-center align-center">
+        <!--        <v-btn-->
+        <!--            elevation="3"-->
+        <!--            fab-->
+        <!--            dark-->
+        <!--            small-->
+        <!--            color="purple darken-4"-->
+        <!--            @click="remove(item)"-->
+        <!--        >-->
+        <!--          <v-icon dark>-->
+        <!--            delete-->
+        <!--          </v-icon>-->
+        <!--        </v-btn>-->
+        <v-dialog
+            v-model="dialog"
+            max-width="290"
+            persistent
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                color="purple darken-4"
+                dark
+                elevation="3"
+                fab
+                small
+                v-bind="attrs"
+                v-on="on"
+            >
+              <v-icon dark>
+                delete
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-card>
+            <v-card-title class="text-h5 word-break">
+              {{ $t("favoritesPage.confirm.text") }}
+            </v-card-title>
+            <v-card-text class="word-break">
+              {{ item.name }}
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                  color="red darken-4"
+                  text
+                  @click="dialog = false; remove(item)"
+              >
+                {{ $t("favoritesPage.confirm.yes") }}
+              </v-btn>
+              <v-btn
+                  color="green darken-1"
+                  text
+                  @click="dialog = false"
+              >
+                {{ $t("favoritesPage.confirm.no") }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-col>
+    </v-row>
+
   </v-card>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapMutations} from "vuex";
 
 export default {
   name: "FavoriteItem",
@@ -137,6 +200,7 @@ export default {
         color: 'pink'
       },
     ],
+    dialog: false,
   }),
   computed: {
     reversePrices() {
@@ -164,6 +228,9 @@ export default {
     ...mapActions({
       loadPrices: 'favorites/loadPrices',
     }),
+    ...mapMutations({
+      remove: 'favorites/removeFromFavorites',
+    }),
   },
   beforeMount() {
     this.loadPrices(this.item)
@@ -187,5 +254,9 @@ export default {
   max-height: 100%;
   margin: auto;
   display: block
+}
+
+.word-break {
+  word-break: break-word;
 }
 </style>

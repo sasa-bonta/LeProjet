@@ -67,5 +67,9 @@ export default {
         mutateTrend(state, {index, trend}) {
             state.list[index].trend = trend
         },
+        removeFromFavorites(state, payload) {
+            const index = state.list.findIndex(obj => obj.url === payload.url)
+            state.list.splice(index, 1)
+        },
     },
 }

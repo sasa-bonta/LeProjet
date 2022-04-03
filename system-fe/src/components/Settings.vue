@@ -20,13 +20,13 @@
           class="d-flex justify-space-around"
         >
           <v-btn
-            v-for="language in languages"
-            :key="language.lang"
-            text
-            :title="language.lang"
-            class="d-flex justify-center"
-            :disabled="language.lang === getLanguage"
-            @click="changeLanguage(language.lang)"
+              v-for="language in languages"
+              :key="language.lang"
+              text
+              :title="language.lang"
+              class="d-flex justify-center"
+              :disabled="language.lang === getLanguage || language.disabled"
+              @click="changeLanguage(language.lang)"
           >
             <country-flag
               :country="language.flag"
@@ -62,9 +62,9 @@ export default {
   components: {CountryFlag},
   data: () => ({
     languages: [
-      {flag: 'md', lang: 'md'},
-      {flag: 'ru', lang: 'ru'},
-      {flag: 'gb', lang: 'en'},
+      {flag: 'md', lang: 'md', disabled: false},
+      {flag: 'ru', lang: 'ru', disabled: false},
+      {flag: 'gb', lang: 'en', disabled: true},
     ],
   }),
   computed: {

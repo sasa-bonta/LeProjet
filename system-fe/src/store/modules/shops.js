@@ -19,7 +19,7 @@ export default {
             store.commit('mutateLoading', true)
             store.commit('mutateShopsList', [])
             const shops = await fetchShops()
-                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response))
             store.commit('mutateShopsList', shops.data)
             store.commit('mutateLoading', false)
         },

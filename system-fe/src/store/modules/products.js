@@ -20,7 +20,7 @@ export default {
         async loadProducts(store, {search, page = 1}) {
             store.commit('mutateLoading', true)
             const products = await fetchProducts({search: search, page: page})
-                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response))
             const mutation = (page > 1) ? 'mutateAppendList' : 'mutateList'
             store.commit(mutation, products.data.map(item => ({
                 name: item.name,

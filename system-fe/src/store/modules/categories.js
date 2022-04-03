@@ -20,7 +20,7 @@ export default {
                 store.commit('mutateLoading', true)
                 store.commit('mutateCategories', [])
                 const categories = await fetchCategories(lang)
-                    .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
+                    .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response))
                 store.commit('mutateCategories', categories.data)
                 store.commit('mutateLoading', false)
             }

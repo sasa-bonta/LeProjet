@@ -31,13 +31,11 @@ export default {
     timeoutId: null,
   }),
   mounted() {
-    EventBus.$on(ERROR_AXIOS_FETCH, (message, status) => {
+    EventBus.$on(ERROR_AXIOS_FETCH, (message) => {
       clearTimeout(this.timeoutId)
       this.snackbar = true
-      this.text = status + " : " + message.substring(
-          message.lastIndexOf("<pre>") + 5,
-          message.lastIndexOf("</pre>")
-      );
+      console.log(message)
+      this.text = message.status + ' : ' + message.data.message
       this.timeoutId = setTimeout(() => {
         this.snackbar = false
       }, 5000)

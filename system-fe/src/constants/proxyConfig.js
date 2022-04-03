@@ -23,7 +23,7 @@ const PROD_TARGETS = {
     apiProducts: 'http://localhost:3000/search',
     apiShops: 'http://localhost:3000/shops',
     apiCurrencies: 'http://localhost:3000/currencies',
-    apiCategories: 'http://localhost:3000/categories',
+    apiCategories: 'http://localhost:3000/categories/test',
     apiPage: 'http://localhost:3000/page',
     apiPrice: 'http://localhost:3000/price',
 }

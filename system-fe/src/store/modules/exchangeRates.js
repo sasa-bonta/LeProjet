@@ -20,7 +20,7 @@ export default {
         async loadExchangeRates(store) {
             store.commit('mutateIsLoading', true)
             const exchangeRates = await fetchExchangeRates()
-                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response))
             store.commit('mutateExchangeRatesList', exchangeRates.data)
             store.commit('mutateIsLoading', false)
         },

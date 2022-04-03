@@ -19,7 +19,7 @@ export default {
             const favoriteItem = store.state.list[index]
             favoriteItem.isPriceLoading = true
             const newPrice = await fetchPrice(item.url, item.provider)
-                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response.data, e.response.status))
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response))
             const lastPrice = favoriteItem.prices[favoriteItem.prices.length - 1].price
             if (newPrice.data && newPrice.data !== lastPrice) {
                 store.commit('pushPrice', {

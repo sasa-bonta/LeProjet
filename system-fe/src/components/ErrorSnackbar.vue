@@ -22,6 +22,7 @@
 
 import {EventBus} from "../eventBus";
 import {ERROR_AXIOS_FETCH} from "../constants/constants";
+import * as MusculaLog from "@muscula.com/muscula-webapp-js-logger";
 
 export default {
   name: "ErrorSnackbar",
@@ -31,11 +32,11 @@ export default {
     timeoutId: null,
   }),
   mounted() {
-    EventBus.$on(ERROR_AXIOS_FETCH, (message) => {
+    EventBus.$on(ERROR_AXIOS_FETCH, (e) => {
+      MusculaLog.Error(ERROR_AXIOS_FETCH, e)
       clearTimeout(this.timeoutId)
       this.snackbar = true
-      console.log(message)
-      this.text = message.status + ' : ' + message.data.message
+      this.text = e.response.status + ' : ' + e.response.data.message
       this.timeoutId = setTimeout(() => {
         this.snackbar = false
       }, 5000)

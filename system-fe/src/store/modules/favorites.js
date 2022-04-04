@@ -1,7 +1,6 @@
 import {EventBus} from "../../eventBus";
 import {ADDING_TO_FAVORITES, ERROR_AXIOS_FETCH} from "../../constants/constants";
 import {fetchPrice} from "../../api/api";
-import * as MusculaLog from '@muscula.com/muscula-webapp-js-logger';
 
 export const state = {
     list: [],
@@ -19,10 +18,7 @@ export default {
             const favoriteItem = store.state.list[index]
             favoriteItem.isPriceLoading = true
             const newPrice = await fetchPrice(item.url, item.provider)
-                .catch((e) => {
-                    EventBus.$emit(ERROR_AXIOS_FETCH, e.response)
-                    MusculaLog.Error(ERROR_AXIOS_FETCH, e);
-                })
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e))
             const lastPrice = favoriteItem.prices[favoriteItem.prices.length - 1].price
             if (newPrice.data && newPrice.data !== lastPrice) {
                 store.commit('pushPrice', {

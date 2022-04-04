@@ -19,7 +19,7 @@ export default {
             store.commit('mutateLoading', true)
             store.commit('mutatePage', [])
             const page = await fetchPage(path)
-                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e.response))
+                .catch((e) => EventBus.$emit(ERROR_AXIOS_FETCH, e))
             store.commit('mutatePage', page.data)
             store.commit('mutateLoading', false)
         },

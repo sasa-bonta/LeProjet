@@ -106,7 +106,10 @@ export default {
   computed: {
     shopLink() {
       return `shopLinkDecoration ${this.$vuetify.theme.dark ? 'white' : 'black'}--text`
-    }
+    },
+  },
+  mounted() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
   },
 }
 </script>

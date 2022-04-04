@@ -38,6 +38,9 @@ export default {
       this.success = "Copied!"
     },
   },
+  mounted() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  },
 }
 </script>
 

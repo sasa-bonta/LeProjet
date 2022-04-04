@@ -40,5 +40,9 @@
       "yes": "Da",
       "no": "Nu"
     }
+  },
+  "addedToFavoritesSnackbar": {
+    "added": "Adăugat la favorite",
+    "exists": "Deja în favorite"
   }
 }

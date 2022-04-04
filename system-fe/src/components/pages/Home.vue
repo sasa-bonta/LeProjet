@@ -23,7 +23,10 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
+  mounted() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  },
 }
 </script>
 

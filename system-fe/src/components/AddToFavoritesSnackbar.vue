@@ -39,11 +39,11 @@ export default {
       clearTimeout(this.timeoutId)
       this.snackbar = true
       if (success) {
-        this.text = "Added to favorites"
+        this.text = this.$t("addedToFavoritesSnackbar.added")
         this.color = 'green'
         this.icon = 'done'
       } else {
-        this.text = "Already in favorites"
+        this.text = this.$t("addedToFavoritesSnackbar.exists")
         this.color = 'red'
         this.icon = 'close'
       }

@@ -81,6 +81,9 @@ export default {
       loadPage: 'page/loadPage',
     }),
   },
+  mounted() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  },
 }
 </script>
 

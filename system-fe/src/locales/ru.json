@@ -40,5 +40,9 @@
       "yes": "Да",
       "no": "Нет"
     }
+  },
+  "addedToFavoritesSnackbar": {
+    "added": "Добавлено в избранное",
+    "exists": "Уже в избранном"
   }
 }

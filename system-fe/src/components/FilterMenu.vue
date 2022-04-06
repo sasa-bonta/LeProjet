@@ -5,7 +5,7 @@
       id="numberOfItems"
       class="ml-6"
     >
-      {{$t("filter.foundProducts")}}: {{ getFilteredProducts.length }}
+      {{ $t("filter.foundProducts") }}: {{ getFilteredProducts.length }}
     </h4>
 
     <!-- Filter criteria, asc/desc -->
@@ -29,7 +29,7 @@
         elevation="2"
         @click="changeOrder"
       >
-        {{ order[sortCriteria.order].ord }}
+        {{ $t("filter." + order[sortCriteria.order].ord) }}
         <v-icon small>
           {{ order[sortCriteria.order].icon }}
         </v-icon>
@@ -117,6 +117,10 @@ import {ASC, DESC} from "../store/modules/constants/constants";
 export default {
   name: "FilterMenu",
   data: () => ({
+    order: [
+      {ord: 'asc', icon: 'north'},
+      {ord: 'desc', icon: 'south'},
+    ],
     currenciesList: [
       {name: 'MDL', sign: 'L'},
       {name: 'EUR', sign: '€'},
@@ -166,11 +170,17 @@ export default {
     shops() {
       return this.filterCriteria.shops
     },
-    sortByItems() {return [this.$t("filter.price"), this.$t("filter.name")]},
-    order() {return [
-      {ord: this.$t("filter.asc"), icon: 'north'},
-      {ord: this.$t("filter.desc"), icon: 'south'},
-    ]},
+    sortByItems() {
+      return [
+        {
+          text: this.$t("filter.price"),
+          value: 'Price'
+        },
+        {
+          text: this.$t("filter.name"),
+          value: 'Name'
+        }]
+    },
   },
   watch: {
     getProducts() {

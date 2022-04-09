@@ -22,11 +22,18 @@ npm run start:dev
 go run main.go
 ```
 
+### Runt unit tests
+
+```bash
+npm run test:unit -- --coverage
+```
+
 - **Search product on all parsers:**
-http://localhost:3000/search?search=iphone
+  http://localhost:3000/search?search=iphone
 
 - **Get all categories:**
-http://localhost:5000/categories
+  http://localhost:5000/categories
 
 - **Get items on the page:**
-http://localhost:5000/page?link=/ru/photo-video/obektivy/
+  http://localhost:5000/page?link=/ru/photo-video/obektivy/
+

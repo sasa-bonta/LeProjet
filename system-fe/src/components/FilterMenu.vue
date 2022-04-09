@@ -117,6 +117,16 @@ import {ASC, DESC} from "../store/modules/constants/constants";
 export default {
   name: "FilterMenu",
   data: () => ({
+    // sortByItems: [
+    //   {
+    //     text: this.$t("filter.price"),
+    //     value: 'Price'
+    //   },
+    //   {
+    //     text: this.$t("filter.name"),
+    //     value: 'Name'
+    //   }
+    // ],
     order: [
       {ord: 'asc', icon: 'north'},
       {ord: 'desc', icon: 'south'},
@@ -208,7 +218,7 @@ export default {
   },
   created() {
     this.currency = this.currenciesList[0]
-    this.sortCriteria.name = this.sortByItems[0]
+    this.sortCriteria.name = this.sortByItems[0].value
     this.loadShops()
   },
   beforeMount() {

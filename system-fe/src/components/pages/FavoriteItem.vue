@@ -41,6 +41,7 @@
         <v-btn
             color="orange lighten-2"
             text
+            @click="show = !show"
         >
           {{ $t("favoritesPage.details") }}
           <v-icon
@@ -108,18 +109,6 @@
         </v-card-title>
       </v-col>
       <v-col class="d-flex justify-center align-center">
-        <!--        <v-btn-->
-        <!--            elevation="3"-->
-        <!--            fab-->
-        <!--            dark-->
-        <!--            small-->
-        <!--            color="purple darken-4"-->
-        <!--            @click="remove(item)"-->
-        <!--        >-->
-        <!--          <v-icon dark>-->
-        <!--            delete-->
-        <!--          </v-icon>-->
-        <!--        </v-btn>-->
         <v-dialog
             v-model="dialog"
             max-width="290"

@@ -17,6 +17,7 @@ const DEV_TARGETS = {
     apiCategories: 'http://localhost:3000/categories/test',
     apiPage: 'http://localhost:3000/page/test',
     apiPrice: 'http://localhost:3000/price/test',
+    images: ''
 }
 
 const PROD_TARGETS = {

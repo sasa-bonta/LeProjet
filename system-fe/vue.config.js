@@ -58,6 +58,14 @@ module.exports = {
                 ws: true,
                 changeOrigin: true,
             },
+            '^/api/images': {
+                target: 'https://darwin.md/images',
+                pathRewrite: {
+                    '^/api/images': '',
+                },
+                ws: true,
+                changeOrigin: true,
+            },
         },
     },
 

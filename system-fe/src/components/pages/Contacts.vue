@@ -20,7 +20,7 @@
           depressed
           elevation="4"
       >
-        Copy
+        {{ $t('contactsPage.copy') }}
       </v-btn>
     </v-row>
   </v-row>

@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "favorites": "Favorite products",
+    "categories": "Categories",
+    "shops": "Shops",
+    "contacts": "Contacts"
+  },
+  "filter": {
+    "foundProducts": "Products found",
+    "shops": "Shops",
+    "sliderText": "Price range",
+    "price": "Price",
+    "name": "Name",
+    "asc": "ASC",
+    "desc": "DESC"
+  },
+  "settings": {
+    "theme": "Dark theme"
+  },
+  "homePage": {
+    "welcome": "Welcome to the page:",
+    "name": "\"Personal Assistant for the analysis and monitoring of the offer in e-commerce in the Republic of Moldova\"",
+    "info": "Here you can find products, compare prices at different stores and monitor the change in product prices. To get started, enter the product name in the top search field or use the categories on the left.",
+    "ps": "This page is not responsible for the veracity of the prices and does not offer the possibility to buy. It is only possible to compare and monitor the prices indicated on the pages of online stores."
+  },
+  "productsPage": {
+    "noProducts": "No searches were performed or no products matched the filter"
+  },
+  "contactsPage": {
+    "name1": "Personal Assistant for analysis and monitoring",
+    "name2": "of the offer in e-commerce in the Republic of Moldova",
+    "text": "To add your store to the app, or if you encounter an error, you can contact the site author at the following Em@il address:",
+    "copy": "copy"
+  },
+  "favoritesPage": {
+    "details": "Details",
+    "confirm": {
+      "text": "Are you sure you want to delete this product from your favorites ?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "addedToFavoritesSnackbar": {
+    "added": "Added to favorites",
+    "exists": "Already in favorites"
+  }
+}

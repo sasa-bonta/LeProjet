@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Page d'accueil",
+    "products": "Des produits",
+    "favorites": "Favoris",
+    "categories": "Catégories",
+    "shops": "Magasins",
+    "contacts": "Contacts"
+  },
+  "filter": {
+    "foundProducts": "Produits trouvés",
+    "shops": "Magasins",
+    "sliderText": "Échelle des prix",
+    "price": "Prix",
+    "name": "Nom",
+    "asc": "ASC",
+    "desc": "DESC"
+  },
+  "settings": {
+    "theme": "Thème sombre"
+  },
+  "homePage": {
+    "welcome": "Bienvenue sur la page:",
+    "name": "\"Assistant personnel pour l'analyse et le suivi de l'offre du commerce électronique en République de Moldova\"",
+    "info": "Ici, vous pouvez trouver des produits, comparer les prix dans différents magasins et suivre l'évolution des prix des produits. Pour commencer, entrez le nom du produit dans le champ de recherche supérieur ou utilisez les catégories à gauche.",
+    "ps": "Cette page n'est pas responsable de la véracité des prix et n'offre pas la possibilité d'acheter. Il est uniquement possible de comparer et de contrôler les prix indiqués sur les pages des magasins en ligne."
+  },
+  "productsPage": {
+    "noProducts": "Aucune recherche n'a été effectuée ou aucun produit ne correspond au filtre"
+  },
+  "contactsPage": {
+    "name1": "L'assistant personnel pour l'analyse et le suivi",
+    "name2": "de l'offre du commerce électronique en République de Moldova",
+    "text": "Pour ajouter votre boutique à l'application, ou si vous rencontrez une erreur, vous pouvez contacter l'auteur du site à l'adresse E-M@il suivante:",
+    "copy": "copier"
+  },
+  "favoritesPage": {
+    "details": "Détails",
+    "confirm": {
+      "text": "Êtes-vous sûr de vouloir supprimer ce produit de vos favoris ?",
+      "yes": "Oui",
+      "no": "Non"
+    }
+  },
+  "addedToFavoritesSnackbar": {
+    "added": "Ajouté aux favoris",
+    "exists": "Déjà dans les favoris"
+  }
+}

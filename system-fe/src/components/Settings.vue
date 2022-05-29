@@ -64,7 +64,8 @@ export default {
     languages: [
       {flag: 'md', lang: 'md', disabled: false},
       {flag: 'ru', lang: 'ru', disabled: false},
-      {flag: 'gb', lang: 'en', disabled: true},
+      {flag: 'fr', lang: 'fr', disabled: false},
+      {flag: 'gb', lang: 'en', disabled: false},
     ],
   }),
   computed: {
